@@ -34,7 +34,8 @@ export async function GET() {
               },
             },
           },
-          orderBy: { enrolledAt: "desc" },
+          // orderBy: { enrolledAt: "desc" },
+          orderBy: { createdAt: "desc" },
         },
         transactions: {
           orderBy: { createdAt: "desc" },
