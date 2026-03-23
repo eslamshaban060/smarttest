@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Auth ──────────────────────────────────────────────────────────────────────
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  fullName      String
+  phone         String?
+  passwordHash  String
+  role          Role     @default(STUDENT)
+  isActive      Boolean  @default(true)
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sessions     Session[]
+  resetTokens  PasswordResetToken[]
+  verifyTokens EmailVerifyToken[]
+  enrollments  Enrollment[]
+  balance      Balance?
+  transactions Transaction[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model EmailVerifyToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ─── Courses ───────────────────────────────────────────────────────────────────
+model Course {
+  id            String       @id @default(uuid())
+  title         String
+  titleAr       String?
+  description   String?
+  descriptionAr String?
+  language      String       @default("AR")
+  published     Boolean      @default(false)
+  price         Float        @default(0)
+  videoUrls     String[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  imageUrl      String?
+  enrollments   Enrollment[]
+}
+
+model Enrollment {
+  id        String           @id @default(uuid())
+  userId    String
+  courseId  String
+  status    EnrollmentStatus @default(ACTIVE)
+  progress  Int              @default(0) // 0-100
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  videoProgress VideoProgress[]
+  certificate   Certificate?
+
+  @@unique([userId, courseId])
+}
+
+// ─── Balance ───────────────────────────────────────────────────────────────────
+
+model Balance {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Float    @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        TransactionType
+  amount      Float
+  description String?
+  createdAt   DateTime        @default(now())
+}
+
+// ─── Enums ─────────────────────────────────────────────────────────────────────
+model VideoProgress {
+  id           String     @id @default(uuid())
+  enrollmentId String
+  videoIndex   Int // index of video in course.videoUrls
+  watched      Boolean    @default(false)
+  watchedAt    DateTime?
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+  @@unique([enrollmentId, videoIndex])
+}
+
+model Certificate {
+  id           String     @id @default(uuid())
+  enrollmentId String     @unique
+  userId       String
+  courseId     String
+  issuedAt     DateTime   @default(now())
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
