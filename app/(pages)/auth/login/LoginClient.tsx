@@ -7,7 +7,7 @@ import { AuthCard } from "@/components/auth/AuthCard";
 import { Field, SubmitButton, Alert } from "@/components/auth/FormFields";
 import { useLanguage } from "@/app/hooks/useLanguage";
 
-export default function LoginPage() {
+export default function LoginClient() {
   const { t, isRTL } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
