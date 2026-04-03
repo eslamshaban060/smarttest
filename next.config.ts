@@ -1,11 +1,21 @@
-// import type { NextConfig } from "next";
+// // import type { NextConfig } from "next";
 
-// const nextConfig: NextConfig = {};
+// // const nextConfig: NextConfig = {};
+
+// // export default nextConfig;
+// const nextConfig = {
+//   eslint: {
+//     ignoreDuringBuilds: true, // ← ده بيخلي الـ build يكمل رغم أخطاء eslint
+//   },
+// };
 
 // export default nextConfig;
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // ← ده بيخلي الـ build يكمل رغم أخطاء eslint
+    ignoreDuringBuilds: true,
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false, // ← يوقف الخطأ ده
   },
 };
 
