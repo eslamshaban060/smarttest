@@ -141,7 +141,7 @@ export const Header = () => {
 
               <div className="px-4 pt-2 flex flex-col gap-2.5 border-t border-white/[0.07] mt-1">
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   onClick={() => setOpen(false)}
                   className="w-full bg-secondary text-white text-[15px] font-semibold py-3.5 rounded-2xl text-center shadow-lg shadow-secondary/25 active:scale-[0.98] transition-all"
                 >
