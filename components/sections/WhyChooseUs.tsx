@@ -58,7 +58,7 @@ export const WhyChooseUs = () => {
           <div>
             <motion.div {...fadeUpView()}>
               <span className="text-secondary text-[12px] font-bold tracking-[0.2em] uppercase block mb-3">
-                {t("Why Smart Academy", "لماذا سمارت أكاديمي")}
+                {t("Why EN-AVM Academy", "لماذا سمارت أكاديمي")}
               </span>
               <h2 className="font-serif text-primary text-[clamp(30px,4vw,48px)] font-bold leading-tight mb-5">
                 {t("Learn from a Leading Expert", "تعلّم من خبيرة رائدة")}

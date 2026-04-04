@@ -81,8 +81,8 @@ export default function RegisterPage() {
     <AuthCard
       titleEn="Create an account"
       titleAr="إنشاء حساب جديد"
-      subtitleEn="Join Smart Academy and start your learning journey"
-      subtitleAr="انضم إلى Smart Academy وابدأ رحلتك التعليمية"
+      subtitleEn="Join EN-AVM Academy and start your learning journey"
+      subtitleAr="انضم إلى EN-AVM Academy وابدأ رحلتك التعليمية"
       footer={
         <span dir={isRTL ? "rtl" : "ltr"}>
           {t("Already have an account?", "لديك حساب بالفعل؟")}{" "}

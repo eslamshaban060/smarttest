@@ -1,6 +1,6 @@
-# 🎓 Smart Academy – Online Learning Platform
+# 🎓 EN-AVM Academy – Online Learning Platform
 
-Smart Academy is a production-grade Learning Management System (LMS) developed as a freelance project for a private medical educational initiative.
+EN-AVM Academy is a production-grade Learning Management System (LMS) developed as a freelance project for a private medical educational initiative.
 
 The platform is designed to deliver structured academic content through a secure, scalable, and bilingual (Arabic & English) web application.
 

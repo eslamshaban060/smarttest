@@ -29,7 +29,7 @@ export const Header = () => {
               <span className="font-bold text-white text-sm font-serif">S</span>
             </div>
             <span className="text-white font-semibold text-[16px] tracking-tight">
-              {t("Smart Academy", "سمارت أكاديمي")}
+              {t("EN-AVM Academy", "سمارت أكاديمي")}
             </span>
           </Link>
 
@@ -101,7 +101,7 @@ export const Header = () => {
                     </span>
                   </div>
                   <span className="text-white font-semibold text-[15px]">
-                    {t("Smart Academy", "سمارت أكاديمي")}
+                    {t("EN-AVM Academy", "سمارت أكاديمي")}
                   </span>
                 </div>
                 <button

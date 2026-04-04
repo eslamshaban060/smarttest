@@ -56,7 +56,7 @@ export default function PrivacyPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
         <div className="max-w-3xl mx-auto px-6 py-16 relative z-10">
           <p className="text-[#00b4d8]/70 text-[11px] font-bold tracking-[0.25em] uppercase mb-4">
-            Smart Academy
+            EN-AVM Academy
           </p>
           <h1 className="text-white text-[clamp(28px,5vw,48px)] font-bold leading-tight mb-3">
             {t("Privacy Policy", "سياسة الخصوصية")}
@@ -72,8 +72,8 @@ export default function PrivacyPage() {
         <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
           <p className="text-slate-500 text-[15px] leading-[1.9]">
             {t(
-              "Smart Academy is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information.",
-              "تلتزم Smart Academy بحماية خصوصيتك. توضح هذه السياسة كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها.",
+              "EN-AVM Academy is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information.",
+              "تلتزم EN-AVM Academy بحماية خصوصيتك. توضح هذه السياسة كيفية جمع معلوماتك الشخصية واستخدامها وحمايتها.",
             )}
           </p>
         </div>

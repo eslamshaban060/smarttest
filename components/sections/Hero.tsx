@@ -61,7 +61,7 @@ export const Hero = () => {
               ) : (
                 <>
                   <span className="block text-[clamp(52px,9vw,96px)] text-white">
-                    Smart
+                    EN-AVM
                   </span>
                   <span className="block text-[clamp(52px,9vw,96px)] text-secondary italic">
                     Academy

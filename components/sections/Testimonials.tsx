@@ -34,7 +34,7 @@ export const Testimonials = () => {
       role: t("ENT Specialist, Zagazig", "متخصص أنف وأذن وحنجرة، الزقازيق"),
       initial: "ع",
       text: t(
-        "Preparing for the Board exam with Smart Academy made the process structured and far less stressful. Highly recommended.",
+        "Preparing for the Board exam with EN-AVM Academy made the process structured and far less stressful. Highly recommended.",
         "التحضير للبورد مع سمارت أكاديمي جعل العملية منهجية وأقل إجهادًا بكثير. أنصح به بشدة.",
       ),
     },

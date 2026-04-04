@@ -119,7 +119,7 @@ export default function CoursesPage() {
             <Sparkles className="w-3.5 h-3.5 text-[#00b4d8]" />
             <span className="text-[#00b4d8] text-[12px] font-semibold tracking-wide">
               {t(
-                "Smart Academy — Medical Education",
+                "EN-AVM Academy — Medical Education",
                 "سمارت أكاديمي — تعليم طبي",
               )}
             </span>

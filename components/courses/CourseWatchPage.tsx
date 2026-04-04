@@ -615,7 +615,7 @@ function CertificateModal({
                   <Sparkles className="w-4 h-4 text-[#e9c46a]" />
                 </div>
                 <span className="text-[#e9c46a]/80 text-[11px] tracking-[0.3em] uppercase font-medium">
-                  Smart Academy
+                  EN-AVM Academy
                 </span>
               </div>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#e9c46a]/50" />
@@ -688,7 +688,7 @@ function CertificateModal({
               <div className="text-center">
                 <div className="w-28 h-px bg-[#e9c46a]/40 mb-1" />
                 <p className="text-white/40 text-[10px] tracking-wide uppercase">
-                  Smart Academy
+                  EN-AVM Academy
                 </p>
               </div>
             </div>

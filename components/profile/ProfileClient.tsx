@@ -153,7 +153,7 @@
 //           <div
 //             className={`flex items-center justify-between mb-8 ${isRTL ? "" : ""}`}
 //           >
-//             <span className="text-white/40 text-[13px]">Smart Academy</span>
+//             <span className="text-white/40 text-[13px]">EN-AVM Academy</span>
 //             <button
 //               onClick={handleLogout}
 //               className={`flex items-center gap-2 text-white/50 hover:text-white text-[13px] transition-colors ${isRTL ? "" : ""}`}
@@ -1189,7 +1189,7 @@ export function ProfileClient() {
               className={`flex items-center justify-between mb-8 ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <span className="text-white/30 text-[13px] font-medium">
-                Smart Academy
+                EN-AVM Academy
               </span>
               <button
                 onClick={handleLogout}

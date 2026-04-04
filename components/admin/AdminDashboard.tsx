@@ -51,7 +51,7 @@ export function AdminDashboard({ currentUserId }: { currentUserId: string }) {
               </div>
               <div className={isRTL ? "text-right" : ""}>
                 <p className="text-white font-bold text-[16px] leading-tight tracking-tight">
-                  Smart Academy
+                  EN-AVM Academy
                 </p>
                 <p className="text-[#00b4d8]/50 text-[10px] uppercase tracking-[0.2em] mt-0.5">
                   {t("Admin Panel", "لوحة التحكم")}

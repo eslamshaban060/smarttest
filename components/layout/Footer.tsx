@@ -26,7 +26,7 @@ export const Footer = () => {
               </span>
             </div>
             <span className="text-white font-semibold text-[17px]">
-              {t("Smart Academy", "سمارت أكاديمي")}
+              {t("EN-AVM Academy", "سمارت أكاديمي")}
             </span>
           </Link>
           <p className="text-[14px] leading-[1.8] max-w-xs">
@@ -83,7 +83,7 @@ export const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-5 text-[13px] text-center text-white/20">
-        © {new Date().getFullYear()} Smart Academy — Prof. Dr. Ebtessam Nada.{" "}
+        © {new Date().getFullYear()} EN-AVM Academy — Prof. Dr. Ebtessam Nada.{" "}
         {t("All rights reserved.", "جميع الحقوق محفوظة.")}
       </div>
     </footer>

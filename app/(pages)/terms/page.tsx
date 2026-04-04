@@ -11,9 +11,9 @@ export default function TermsPage() {
       titleEn: "Acceptance of Terms",
       titleAr: "قبول الشروط",
       contentEn:
-        "By accessing and using Smart Academy, you accept and agree to be bound by these Terms of Use. If you do not agree, please do not use our platform.",
+        "By accessing and using EN-AVM Academy, you accept and agree to be bound by these Terms of Use. If you do not agree, please do not use our platform.",
       contentAr:
-        "باستخدام Smart Academy، فإنك تقبل وتوافق على الالتزام بشروط الاستخدام هذه. إذا كنت لا توافق، يرجى عدم استخدام منصتنا.",
+        "باستخدام EN-AVM Academy، فإنك تقبل وتوافق على الالتزام بشروط الاستخدام هذه. إذا كنت لا توافق، يرجى عدم استخدام منصتنا.",
     },
     {
       titleEn: "User Accounts",
@@ -27,25 +27,25 @@ export default function TermsPage() {
       titleEn: "Educational Content",
       titleAr: "المحتوى التعليمي",
       contentEn:
-        "All content provided on Smart Academy is for educational purposes only. Content is created by qualified medical professionals and is regularly updated.",
+        "All content provided on EN-AVM Academy is for educational purposes only. Content is created by qualified medical professionals and is regularly updated.",
       contentAr:
-        "جميع المحتويات المقدمة على Smart Academy لأغراض تعليمية فقط. يتم إنشاء المحتوى من قِبل متخصصين طبيين مؤهلين ويتم تحديثه بانتظام.",
+        "جميع المحتويات المقدمة على EN-AVM Academy لأغراض تعليمية فقط. يتم إنشاء المحتوى من قِبل متخصصين طبيين مؤهلين ويتم تحديثه بانتظام.",
     },
     {
       titleEn: "Intellectual Property",
       titleAr: "الملكية الفكرية",
       contentEn:
-        "All content, materials, and resources on this platform are the intellectual property of Smart Academy. You may not reproduce or distribute any content without permission.",
+        "All content, materials, and resources on this platform are the intellectual property of EN-AVM Academy. You may not reproduce or distribute any content without permission.",
       contentAr:
-        "جميع المحتويات والمواد والموارد على هذه المنصة هي ملكية فكرية لـ Smart Academy. لا يجوز لك إعادة إنتاج أو توزيع أي محتوى دون إذن.",
+        "جميع المحتويات والمواد والموارد على هذه المنصة هي ملكية فكرية لـ EN-AVM Academy. لا يجوز لك إعادة إنتاج أو توزيع أي محتوى دون إذن.",
     },
     {
       titleEn: "Limitation of Liability",
       titleAr: "تحديد المسؤولية",
       contentEn:
-        "Smart Academy shall not be liable for any indirect or consequential damages arising from your use of the platform. Educational content does not replace professional medical advice.",
+        "EN-AVM Academy shall not be liable for any indirect or consequential damages arising from your use of the platform. Educational content does not replace professional medical advice.",
       contentAr:
-        "لن تكون Smart Academy مسؤولة عن أي أضرار غير مباشرة ناتجة عن استخدامك للمنصة. المحتوى التعليمي لا يحل محل المشورة الطبية المتخصصة.",
+        "لن تكون EN-AVM Academy مسؤولة عن أي أضرار غير مباشرة ناتجة عن استخدامك للمنصة. المحتوى التعليمي لا يحل محل المشورة الطبية المتخصصة.",
     },
     {
       titleEn: "Changes to Terms",
@@ -64,7 +64,7 @@ export default function TermsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
         <div className="max-w-3xl mx-auto px-6 py-16 relative z-10">
           <p className="text-[#00b4d8]/70 text-[11px] font-bold tracking-[0.25em] uppercase mb-4">
-            Smart Academy
+            EN-AVM Academy
           </p>
           <h1 className="text-white text-[clamp(28px,5vw,48px)] font-bold leading-tight mb-3">
             {t("Terms of Use", "شروط الاستخدام")}
@@ -80,8 +80,8 @@ export default function TermsPage() {
         <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
           <p className="text-slate-500 text-[15px] leading-[1.9]">
             {t(
-              "Welcome to Smart Academy. These terms govern your use of our platform and educational services. Please read them carefully.",
-              "مرحباً بك في Smart Academy. تحكم هذه الشروط استخدامك لمنصتنا وخدماتنا التعليمية. يرجى قراءتها بعناية.",
+              "Welcome to EN-AVM Academy. These terms govern your use of our platform and educational services. Please read them carefully.",
+              "مرحباً بك في EN-AVM Academy. تحكم هذه الشروط استخدامك لمنصتنا وخدماتنا التعليمية. يرجى قراءتها بعناية.",
             )}
           </p>
         </div>

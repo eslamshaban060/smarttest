@@ -40,7 +40,7 @@ export function AuthCard({
               </span>
             </div>
             <span className="text-[#0a2540] font-semibold text-[13px] tracking-wide">
-              Smart Academy
+              EN-AVM Academy
             </span>
           </Link>
         </div>

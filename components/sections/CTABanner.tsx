@@ -30,7 +30,7 @@ export const CTABanner = () => {
           </h2>
           <p className="text-white/45 text-[16px] leading-relaxed mb-10 max-w-xl mx-auto">
             {t(
-              "Join hundreds of physicians and audiologists who trust Smart Academy for their continuing medical education.",
+              "Join hundreds of physicians and audiologists who trust EN-AVM Academy for their continuing medical education.",
               "انضم لمئات الأطباء وأخصائيي السمعيات الذين يثقون بسمارت أكاديمي في تعليمهم الطبي المستمر.",
             )}
           </p>

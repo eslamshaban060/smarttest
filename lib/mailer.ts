@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const FROM = `"Smart Academy" <${process.env.SMTP_USER}>`;
+const FROM = `"EN-AVM Academy" <${process.env.SMTP_USER}>`;
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export async function sendVerifyEmail(to: string, token: string) {
@@ -18,9 +18,9 @@ export async function sendVerifyEmail(to: string, token: string) {
   await transporter.sendMail({
     from: FROM,
     to,
-    subject: "تأكيد البريد الإلكتروني — Smart Academy",
+    subject: "تأكيد البريد الإلكتروني — EN-AVM Academy",
     html: emailTemplate({
-      title: "مرحباً بك في Smart Academy 🎓",
+      title: "مرحباً بك في EN-AVM Academy 🎓",
       body: `<p style="color:#475569;font-size:15px;line-height:1.8;margin:0 0 20px">
         شكراً لتسجيلك! انقر الزر أدناه لتفعيل حسابك.
       </p>`,
@@ -35,7 +35,7 @@ export async function sendResetPasswordEmail(to: string, token: string) {
   await transporter.sendMail({
     from: FROM,
     to,
-    subject: "إعادة تعيين كلمة المرور — Smart Academy",
+    subject: "إعادة تعيين كلمة المرور — EN-AVM Academy",
     html: emailTemplate({
       title: "إعادة تعيين كلمة المرور",
       body: `<p style="color:#475569;font-size:15px;line-height:1.8;margin:0 0 20px">
@@ -65,7 +65,7 @@ function emailTemplate({
 <tr><td align="center">
 <table width="100%" style="max-width:520px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(10,37,64,0.08)">
 <tr><td style="background:#0a2540;padding:28px 40px;text-align:center">
-  <span style="color:#fff;font-size:18px;font-weight:700">Smart Academy</span>
+  <span style="color:#fff;font-size:18px;font-weight:700">EN-AVM Academy</span>
 </td></tr>
 <tr><td style="padding:40px">
   <h1 style="color:#0a2540;font-size:22px;font-weight:700;margin:0 0 16px">${title}</h1>
