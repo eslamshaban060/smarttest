@@ -25,7 +25,6 @@ export async function PATCH(
       return NextResponse.json({ error: "Already processed" }, { status: 400 });
 
     if (action === "approve") {
-      // update request + add balance + create transaction atomically
       await prisma.$transaction([
         prisma.rechargeRequest.update({
           where: { id },
@@ -63,6 +62,32 @@ export async function PATCH(
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (err) {
     console.error("[ADMIN_RECHARGE_PATCH]", err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser || currentUser.role !== "ADMIN")
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const { id } = await params;
+
+    const rechargeReq = await prisma.rechargeRequest.findUnique({
+      where: { id },
+    });
+    if (!rechargeReq)
+      return NextResponse.json({ error: "Request not found" }, { status: 404 });
+
+    await prisma.rechargeRequest.delete({ where: { id } });
+
+    return NextResponse.json({ success: true, message: "Deleted" });
+  } catch (err) {
+    console.error("[ADMIN_RECHARGE_DELETE]", err);
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }
