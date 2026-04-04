@@ -21,12 +21,13 @@ model User {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  sessions     Session[]
-  resetTokens  PasswordResetToken[]
-  verifyTokens EmailVerifyToken[]
-  enrollments  Enrollment[]
-  balance      Balance?
-  transactions Transaction[]
+  sessions         Session[]
+  resetTokens      PasswordResetToken[]
+  verifyTokens     EmailVerifyToken[]
+  enrollments      Enrollment[]
+  balance          Balance?
+  transactions     Transaction[]
+  rechargeRequests RechargeRequest[]
 }
 
 model Session {
@@ -148,4 +149,24 @@ enum EnrollmentStatus {
 enum TransactionType {
   CREDIT
   DEBIT
+}
+
+model RechargeRequest {
+  id         String         @id @default(uuid())
+  userId     String
+  amount     Float
+  senderName String
+  receiptUrl String // base64 or URL of receipt image
+  status     RechargeStatus @default(PENDING)
+  adminNote  String?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum RechargeStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }

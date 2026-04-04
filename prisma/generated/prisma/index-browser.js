@@ -216,6 +216,18 @@ exports.Prisma.CertificateScalarFieldEnum = {
   issuedAt: 'issuedAt'
 };
 
+exports.Prisma.RechargeRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  amount: 'amount',
+  senderName: 'senderName',
+  receiptUrl: 'receiptUrl',
+  status: 'status',
+  adminNote: 'adminNote',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -246,6 +258,12 @@ exports.TransactionType = exports.$Enums.TransactionType = {
   DEBIT: 'DEBIT'
 };
 
+exports.RechargeStatus = exports.$Enums.RechargeStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
@@ -256,7 +274,8 @@ exports.Prisma.ModelName = {
   Balance: 'Balance',
   Transaction: 'Transaction',
   VideoProgress: 'VideoProgress',
-  Certificate: 'Certificate'
+  Certificate: 'Certificate',
+  RechargeRequest: 'RechargeRequest'
 };
 
 /**

@@ -63,6 +63,11 @@ export type VideoProgress = $Result.DefaultSelection<Prisma.$VideoProgressPayloa
  * 
  */
 export type Certificate = $Result.DefaultSelection<Prisma.$CertificatePayload>
+/**
+ * Model RechargeRequest
+ * 
+ */
+export type RechargeRequest = $Result.DefaultSelection<Prisma.$RechargeRequestPayload>
 
 /**
  * Enums
@@ -92,6 +97,15 @@ export const TransactionType: {
 
 export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
 
+
+export const RechargeStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type RechargeStatus = (typeof RechargeStatus)[keyof typeof RechargeStatus]
+
 }
 
 export type Role = $Enums.Role
@@ -105,6 +119,10 @@ export const EnrollmentStatus: typeof $Enums.EnrollmentStatus
 export type TransactionType = $Enums.TransactionType
 
 export const TransactionType: typeof $Enums.TransactionType
+
+export type RechargeStatus = $Enums.RechargeStatus
+
+export const RechargeStatus: typeof $Enums.RechargeStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -322,6 +340,16 @@ export class PrismaClient<
     * ```
     */
   get certificate(): Prisma.CertificateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.rechargeRequest`: Exposes CRUD operations for the **RechargeRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RechargeRequests
+    * const rechargeRequests = await prisma.rechargeRequest.findMany()
+    * ```
+    */
+  get rechargeRequest(): Prisma.RechargeRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -765,7 +793,8 @@ export namespace Prisma {
     Balance: 'Balance',
     Transaction: 'Transaction',
     VideoProgress: 'VideoProgress',
-    Certificate: 'Certificate'
+    Certificate: 'Certificate',
+    RechargeRequest: 'RechargeRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -781,7 +810,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "passwordResetToken" | "emailVerifyToken" | "course" | "enrollment" | "balance" | "transaction" | "videoProgress" | "certificate"
+      modelProps: "user" | "session" | "passwordResetToken" | "emailVerifyToken" | "course" | "enrollment" | "balance" | "transaction" | "videoProgress" | "certificate" | "rechargeRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1525,6 +1554,80 @@ export namespace Prisma {
           }
         }
       }
+      RechargeRequest: {
+        payload: Prisma.$RechargeRequestPayload<ExtArgs>
+        fields: Prisma.RechargeRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RechargeRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RechargeRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.RechargeRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RechargeRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          findMany: {
+            args: Prisma.RechargeRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>[]
+          }
+          create: {
+            args: Prisma.RechargeRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          createMany: {
+            args: Prisma.RechargeRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RechargeRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.RechargeRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          update: {
+            args: Prisma.RechargeRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.RechargeRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RechargeRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RechargeRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.RechargeRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RechargeRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.RechargeRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRechargeRequest>
+          }
+          groupBy: {
+            args: Prisma.RechargeRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RechargeRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RechargeRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<RechargeRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1643,6 +1746,7 @@ export namespace Prisma {
     transaction?: TransactionOmit
     videoProgress?: VideoProgressOmit
     certificate?: CertificateOmit
+    rechargeRequest?: RechargeRequestOmit
   }
 
   /* Types for Logging */
@@ -1728,6 +1832,7 @@ export namespace Prisma {
     verifyTokens: number
     enrollments: number
     transactions: number
+    rechargeRequests: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1736,6 +1841,7 @@ export namespace Prisma {
     verifyTokens?: boolean | UserCountOutputTypeCountVerifyTokensArgs
     enrollments?: boolean | UserCountOutputTypeCountEnrollmentsArgs
     transactions?: boolean | UserCountOutputTypeCountTransactionsArgs
+    rechargeRequests?: boolean | UserCountOutputTypeCountRechargeRequestsArgs
   }
 
   // Custom InputTypes
@@ -1782,6 +1888,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransactionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRechargeRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RechargeRequestWhereInput
   }
 
 
@@ -2061,6 +2174,7 @@ export namespace Prisma {
     enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
     balance?: boolean | User$balanceArgs<ExtArgs>
     transactions?: boolean | User$transactionsArgs<ExtArgs>
+    rechargeRequests?: boolean | User$rechargeRequestsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2111,6 +2225,7 @@ export namespace Prisma {
     enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
     balance?: boolean | User$balanceArgs<ExtArgs>
     transactions?: boolean | User$transactionsArgs<ExtArgs>
+    rechargeRequests?: boolean | User$rechargeRequestsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2125,6 +2240,7 @@ export namespace Prisma {
       enrollments: Prisma.$EnrollmentPayload<ExtArgs>[]
       balance: Prisma.$BalancePayload<ExtArgs> | null
       transactions: Prisma.$TransactionPayload<ExtArgs>[]
+      rechargeRequests: Prisma.$RechargeRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2537,6 +2653,7 @@ export namespace Prisma {
     enrollments<T extends User$enrollmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$enrollmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     balance<T extends User$balanceArgs<ExtArgs> = {}>(args?: Subset<T, User$balanceArgs<ExtArgs>>): Prisma__BalanceClient<$Result.GetResult<Prisma.$BalancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     transactions<T extends User$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    rechargeRequests<T extends User$rechargeRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$rechargeRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3100,6 +3217,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * User.rechargeRequests
+   */
+  export type User$rechargeRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    where?: RechargeRequestWhereInput
+    orderBy?: RechargeRequestOrderByWithRelationInput | RechargeRequestOrderByWithRelationInput[]
+    cursor?: RechargeRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RechargeRequestScalarFieldEnum | RechargeRequestScalarFieldEnum[]
   }
 
   /**
@@ -13026,6 +13167,1150 @@ export namespace Prisma {
 
 
   /**
+   * Model RechargeRequest
+   */
+
+  export type AggregateRechargeRequest = {
+    _count: RechargeRequestCountAggregateOutputType | null
+    _avg: RechargeRequestAvgAggregateOutputType | null
+    _sum: RechargeRequestSumAggregateOutputType | null
+    _min: RechargeRequestMinAggregateOutputType | null
+    _max: RechargeRequestMaxAggregateOutputType | null
+  }
+
+  export type RechargeRequestAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type RechargeRequestSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type RechargeRequestMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    senderName: string | null
+    receiptUrl: string | null
+    status: $Enums.RechargeStatus | null
+    adminNote: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RechargeRequestMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    amount: number | null
+    senderName: string | null
+    receiptUrl: string | null
+    status: $Enums.RechargeStatus | null
+    adminNote: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RechargeRequestCountAggregateOutputType = {
+    id: number
+    userId: number
+    amount: number
+    senderName: number
+    receiptUrl: number
+    status: number
+    adminNote: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RechargeRequestAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type RechargeRequestSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type RechargeRequestMinAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    senderName?: true
+    receiptUrl?: true
+    status?: true
+    adminNote?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RechargeRequestMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    senderName?: true
+    receiptUrl?: true
+    status?: true
+    adminNote?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RechargeRequestCountAggregateInputType = {
+    id?: true
+    userId?: true
+    amount?: true
+    senderName?: true
+    receiptUrl?: true
+    status?: true
+    adminNote?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RechargeRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RechargeRequest to aggregate.
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RechargeRequests to fetch.
+     */
+    orderBy?: RechargeRequestOrderByWithRelationInput | RechargeRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RechargeRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RechargeRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RechargeRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RechargeRequests
+    **/
+    _count?: true | RechargeRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RechargeRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RechargeRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RechargeRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RechargeRequestMaxAggregateInputType
+  }
+
+  export type GetRechargeRequestAggregateType<T extends RechargeRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateRechargeRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRechargeRequest[P]>
+      : GetScalarType<T[P], AggregateRechargeRequest[P]>
+  }
+
+
+
+
+  export type RechargeRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RechargeRequestWhereInput
+    orderBy?: RechargeRequestOrderByWithAggregationInput | RechargeRequestOrderByWithAggregationInput[]
+    by: RechargeRequestScalarFieldEnum[] | RechargeRequestScalarFieldEnum
+    having?: RechargeRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RechargeRequestCountAggregateInputType | true
+    _avg?: RechargeRequestAvgAggregateInputType
+    _sum?: RechargeRequestSumAggregateInputType
+    _min?: RechargeRequestMinAggregateInputType
+    _max?: RechargeRequestMaxAggregateInputType
+  }
+
+  export type RechargeRequestGroupByOutputType = {
+    id: string
+    userId: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status: $Enums.RechargeStatus
+    adminNote: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: RechargeRequestCountAggregateOutputType | null
+    _avg: RechargeRequestAvgAggregateOutputType | null
+    _sum: RechargeRequestSumAggregateOutputType | null
+    _min: RechargeRequestMinAggregateOutputType | null
+    _max: RechargeRequestMaxAggregateOutputType | null
+  }
+
+  type GetRechargeRequestGroupByPayload<T extends RechargeRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RechargeRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RechargeRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RechargeRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], RechargeRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RechargeRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    senderName?: boolean
+    receiptUrl?: boolean
+    status?: boolean
+    adminNote?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rechargeRequest"]>
+
+  export type RechargeRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    senderName?: boolean
+    receiptUrl?: boolean
+    status?: boolean
+    adminNote?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rechargeRequest"]>
+
+  export type RechargeRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    senderName?: boolean
+    receiptUrl?: boolean
+    status?: boolean
+    adminNote?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rechargeRequest"]>
+
+  export type RechargeRequestSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    senderName?: boolean
+    receiptUrl?: boolean
+    status?: boolean
+    adminNote?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RechargeRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "amount" | "senderName" | "receiptUrl" | "status" | "adminNote" | "createdAt" | "updatedAt", ExtArgs["result"]["rechargeRequest"]>
+  export type RechargeRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RechargeRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RechargeRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $RechargeRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RechargeRequest"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      amount: number
+      senderName: string
+      receiptUrl: string
+      status: $Enums.RechargeStatus
+      adminNote: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["rechargeRequest"]>
+    composites: {}
+  }
+
+  type RechargeRequestGetPayload<S extends boolean | null | undefined | RechargeRequestDefaultArgs> = $Result.GetResult<Prisma.$RechargeRequestPayload, S>
+
+  type RechargeRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RechargeRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RechargeRequestCountAggregateInputType | true
+    }
+
+  export interface RechargeRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RechargeRequest'], meta: { name: 'RechargeRequest' } }
+    /**
+     * Find zero or one RechargeRequest that matches the filter.
+     * @param {RechargeRequestFindUniqueArgs} args - Arguments to find a RechargeRequest
+     * @example
+     * // Get one RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RechargeRequestFindUniqueArgs>(args: SelectSubset<T, RechargeRequestFindUniqueArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RechargeRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RechargeRequestFindUniqueOrThrowArgs} args - Arguments to find a RechargeRequest
+     * @example
+     * // Get one RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RechargeRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, RechargeRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RechargeRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestFindFirstArgs} args - Arguments to find a RechargeRequest
+     * @example
+     * // Get one RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RechargeRequestFindFirstArgs>(args?: SelectSubset<T, RechargeRequestFindFirstArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RechargeRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestFindFirstOrThrowArgs} args - Arguments to find a RechargeRequest
+     * @example
+     * // Get one RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RechargeRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, RechargeRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RechargeRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RechargeRequests
+     * const rechargeRequests = await prisma.rechargeRequest.findMany()
+     * 
+     * // Get first 10 RechargeRequests
+     * const rechargeRequests = await prisma.rechargeRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rechargeRequestWithIdOnly = await prisma.rechargeRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RechargeRequestFindManyArgs>(args?: SelectSubset<T, RechargeRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RechargeRequest.
+     * @param {RechargeRequestCreateArgs} args - Arguments to create a RechargeRequest.
+     * @example
+     * // Create one RechargeRequest
+     * const RechargeRequest = await prisma.rechargeRequest.create({
+     *   data: {
+     *     // ... data to create a RechargeRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends RechargeRequestCreateArgs>(args: SelectSubset<T, RechargeRequestCreateArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RechargeRequests.
+     * @param {RechargeRequestCreateManyArgs} args - Arguments to create many RechargeRequests.
+     * @example
+     * // Create many RechargeRequests
+     * const rechargeRequest = await prisma.rechargeRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RechargeRequestCreateManyArgs>(args?: SelectSubset<T, RechargeRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RechargeRequests and returns the data saved in the database.
+     * @param {RechargeRequestCreateManyAndReturnArgs} args - Arguments to create many RechargeRequests.
+     * @example
+     * // Create many RechargeRequests
+     * const rechargeRequest = await prisma.rechargeRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RechargeRequests and only return the `id`
+     * const rechargeRequestWithIdOnly = await prisma.rechargeRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RechargeRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, RechargeRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RechargeRequest.
+     * @param {RechargeRequestDeleteArgs} args - Arguments to delete one RechargeRequest.
+     * @example
+     * // Delete one RechargeRequest
+     * const RechargeRequest = await prisma.rechargeRequest.delete({
+     *   where: {
+     *     // ... filter to delete one RechargeRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RechargeRequestDeleteArgs>(args: SelectSubset<T, RechargeRequestDeleteArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RechargeRequest.
+     * @param {RechargeRequestUpdateArgs} args - Arguments to update one RechargeRequest.
+     * @example
+     * // Update one RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RechargeRequestUpdateArgs>(args: SelectSubset<T, RechargeRequestUpdateArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RechargeRequests.
+     * @param {RechargeRequestDeleteManyArgs} args - Arguments to filter RechargeRequests to delete.
+     * @example
+     * // Delete a few RechargeRequests
+     * const { count } = await prisma.rechargeRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RechargeRequestDeleteManyArgs>(args?: SelectSubset<T, RechargeRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RechargeRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RechargeRequests
+     * const rechargeRequest = await prisma.rechargeRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RechargeRequestUpdateManyArgs>(args: SelectSubset<T, RechargeRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RechargeRequests and returns the data updated in the database.
+     * @param {RechargeRequestUpdateManyAndReturnArgs} args - Arguments to update many RechargeRequests.
+     * @example
+     * // Update many RechargeRequests
+     * const rechargeRequest = await prisma.rechargeRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RechargeRequests and only return the `id`
+     * const rechargeRequestWithIdOnly = await prisma.rechargeRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RechargeRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, RechargeRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RechargeRequest.
+     * @param {RechargeRequestUpsertArgs} args - Arguments to update or create a RechargeRequest.
+     * @example
+     * // Update or create a RechargeRequest
+     * const rechargeRequest = await prisma.rechargeRequest.upsert({
+     *   create: {
+     *     // ... data to create a RechargeRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RechargeRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RechargeRequestUpsertArgs>(args: SelectSubset<T, RechargeRequestUpsertArgs<ExtArgs>>): Prisma__RechargeRequestClient<$Result.GetResult<Prisma.$RechargeRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RechargeRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestCountArgs} args - Arguments to filter RechargeRequests to count.
+     * @example
+     * // Count the number of RechargeRequests
+     * const count = await prisma.rechargeRequest.count({
+     *   where: {
+     *     // ... the filter for the RechargeRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends RechargeRequestCountArgs>(
+      args?: Subset<T, RechargeRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RechargeRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RechargeRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RechargeRequestAggregateArgs>(args: Subset<T, RechargeRequestAggregateArgs>): Prisma.PrismaPromise<GetRechargeRequestAggregateType<T>>
+
+    /**
+     * Group by RechargeRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RechargeRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RechargeRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RechargeRequestGroupByArgs['orderBy'] }
+        : { orderBy?: RechargeRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RechargeRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRechargeRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RechargeRequest model
+   */
+  readonly fields: RechargeRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RechargeRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RechargeRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RechargeRequest model
+   */
+  interface RechargeRequestFieldRefs {
+    readonly id: FieldRef<"RechargeRequest", 'String'>
+    readonly userId: FieldRef<"RechargeRequest", 'String'>
+    readonly amount: FieldRef<"RechargeRequest", 'Float'>
+    readonly senderName: FieldRef<"RechargeRequest", 'String'>
+    readonly receiptUrl: FieldRef<"RechargeRequest", 'String'>
+    readonly status: FieldRef<"RechargeRequest", 'RechargeStatus'>
+    readonly adminNote: FieldRef<"RechargeRequest", 'String'>
+    readonly createdAt: FieldRef<"RechargeRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"RechargeRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RechargeRequest findUnique
+   */
+  export type RechargeRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RechargeRequest to fetch.
+     */
+    where: RechargeRequestWhereUniqueInput
+  }
+
+  /**
+   * RechargeRequest findUniqueOrThrow
+   */
+  export type RechargeRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RechargeRequest to fetch.
+     */
+    where: RechargeRequestWhereUniqueInput
+  }
+
+  /**
+   * RechargeRequest findFirst
+   */
+  export type RechargeRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RechargeRequest to fetch.
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RechargeRequests to fetch.
+     */
+    orderBy?: RechargeRequestOrderByWithRelationInput | RechargeRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RechargeRequests.
+     */
+    cursor?: RechargeRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RechargeRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RechargeRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RechargeRequests.
+     */
+    distinct?: RechargeRequestScalarFieldEnum | RechargeRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RechargeRequest findFirstOrThrow
+   */
+  export type RechargeRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RechargeRequest to fetch.
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RechargeRequests to fetch.
+     */
+    orderBy?: RechargeRequestOrderByWithRelationInput | RechargeRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RechargeRequests.
+     */
+    cursor?: RechargeRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RechargeRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RechargeRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RechargeRequests.
+     */
+    distinct?: RechargeRequestScalarFieldEnum | RechargeRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RechargeRequest findMany
+   */
+  export type RechargeRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RechargeRequests to fetch.
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RechargeRequests to fetch.
+     */
+    orderBy?: RechargeRequestOrderByWithRelationInput | RechargeRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RechargeRequests.
+     */
+    cursor?: RechargeRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RechargeRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RechargeRequests.
+     */
+    skip?: number
+    distinct?: RechargeRequestScalarFieldEnum | RechargeRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RechargeRequest create
+   */
+  export type RechargeRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RechargeRequest.
+     */
+    data: XOR<RechargeRequestCreateInput, RechargeRequestUncheckedCreateInput>
+  }
+
+  /**
+   * RechargeRequest createMany
+   */
+  export type RechargeRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RechargeRequests.
+     */
+    data: RechargeRequestCreateManyInput | RechargeRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RechargeRequest createManyAndReturn
+   */
+  export type RechargeRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many RechargeRequests.
+     */
+    data: RechargeRequestCreateManyInput | RechargeRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RechargeRequest update
+   */
+  export type RechargeRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RechargeRequest.
+     */
+    data: XOR<RechargeRequestUpdateInput, RechargeRequestUncheckedUpdateInput>
+    /**
+     * Choose, which RechargeRequest to update.
+     */
+    where: RechargeRequestWhereUniqueInput
+  }
+
+  /**
+   * RechargeRequest updateMany
+   */
+  export type RechargeRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RechargeRequests.
+     */
+    data: XOR<RechargeRequestUpdateManyMutationInput, RechargeRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which RechargeRequests to update
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * Limit how many RechargeRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RechargeRequest updateManyAndReturn
+   */
+  export type RechargeRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update RechargeRequests.
+     */
+    data: XOR<RechargeRequestUpdateManyMutationInput, RechargeRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which RechargeRequests to update
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * Limit how many RechargeRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RechargeRequest upsert
+   */
+  export type RechargeRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RechargeRequest to update in case it exists.
+     */
+    where: RechargeRequestWhereUniqueInput
+    /**
+     * In case the RechargeRequest found by the `where` argument doesn't exist, create a new RechargeRequest with this data.
+     */
+    create: XOR<RechargeRequestCreateInput, RechargeRequestUncheckedCreateInput>
+    /**
+     * In case the RechargeRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RechargeRequestUpdateInput, RechargeRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * RechargeRequest delete
+   */
+  export type RechargeRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+    /**
+     * Filter which RechargeRequest to delete.
+     */
+    where: RechargeRequestWhereUniqueInput
+  }
+
+  /**
+   * RechargeRequest deleteMany
+   */
+  export type RechargeRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RechargeRequests to delete
+     */
+    where?: RechargeRequestWhereInput
+    /**
+     * Limit how many RechargeRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RechargeRequest without action
+   */
+  export type RechargeRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RechargeRequest
+     */
+    select?: RechargeRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RechargeRequest
+     */
+    omit?: RechargeRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RechargeRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -13165,6 +14450,21 @@ export namespace Prisma {
   export type CertificateScalarFieldEnum = (typeof CertificateScalarFieldEnum)[keyof typeof CertificateScalarFieldEnum]
 
 
+  export const RechargeRequestScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    amount: 'amount',
+    senderName: 'senderName',
+    receiptUrl: 'receiptUrl',
+    status: 'status',
+    adminNote: 'adminNote',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RechargeRequestScalarFieldEnum = (typeof RechargeRequestScalarFieldEnum)[keyof typeof RechargeRequestScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -13297,6 +14597,20 @@ export namespace Prisma {
    */
   export type ListEnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionType[]'>
     
+
+
+  /**
+   * Reference to a field of type 'RechargeStatus'
+   */
+  export type EnumRechargeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RechargeStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'RechargeStatus[]'
+   */
+  export type ListEnumRechargeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RechargeStatus[]'>
+    
   /**
    * Deep Input Types
    */
@@ -13322,6 +14636,7 @@ export namespace Prisma {
     enrollments?: EnrollmentListRelationFilter
     balance?: XOR<BalanceNullableScalarRelationFilter, BalanceWhereInput> | null
     transactions?: TransactionListRelationFilter
+    rechargeRequests?: RechargeRequestListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13341,6 +14656,7 @@ export namespace Prisma {
     enrollments?: EnrollmentOrderByRelationAggregateInput
     balance?: BalanceOrderByWithRelationInput
     transactions?: TransactionOrderByRelationAggregateInput
+    rechargeRequests?: RechargeRequestOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13363,6 +14679,7 @@ export namespace Prisma {
     enrollments?: EnrollmentListRelationFilter
     balance?: XOR<BalanceNullableScalarRelationFilter, BalanceWhereInput> | null
     transactions?: TransactionListRelationFilter
+    rechargeRequests?: RechargeRequestListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -13968,6 +15285,83 @@ export namespace Prisma {
     issuedAt?: DateTimeWithAggregatesFilter<"Certificate"> | Date | string
   }
 
+  export type RechargeRequestWhereInput = {
+    AND?: RechargeRequestWhereInput | RechargeRequestWhereInput[]
+    OR?: RechargeRequestWhereInput[]
+    NOT?: RechargeRequestWhereInput | RechargeRequestWhereInput[]
+    id?: StringFilter<"RechargeRequest"> | string
+    userId?: StringFilter<"RechargeRequest"> | string
+    amount?: FloatFilter<"RechargeRequest"> | number
+    senderName?: StringFilter<"RechargeRequest"> | string
+    receiptUrl?: StringFilter<"RechargeRequest"> | string
+    status?: EnumRechargeStatusFilter<"RechargeRequest"> | $Enums.RechargeStatus
+    adminNote?: StringNullableFilter<"RechargeRequest"> | string | null
+    createdAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type RechargeRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    senderName?: SortOrder
+    receiptUrl?: SortOrder
+    status?: SortOrder
+    adminNote?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type RechargeRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RechargeRequestWhereInput | RechargeRequestWhereInput[]
+    OR?: RechargeRequestWhereInput[]
+    NOT?: RechargeRequestWhereInput | RechargeRequestWhereInput[]
+    userId?: StringFilter<"RechargeRequest"> | string
+    amount?: FloatFilter<"RechargeRequest"> | number
+    senderName?: StringFilter<"RechargeRequest"> | string
+    receiptUrl?: StringFilter<"RechargeRequest"> | string
+    status?: EnumRechargeStatusFilter<"RechargeRequest"> | $Enums.RechargeStatus
+    adminNote?: StringNullableFilter<"RechargeRequest"> | string | null
+    createdAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type RechargeRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    senderName?: SortOrder
+    receiptUrl?: SortOrder
+    status?: SortOrder
+    adminNote?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RechargeRequestCountOrderByAggregateInput
+    _avg?: RechargeRequestAvgOrderByAggregateInput
+    _max?: RechargeRequestMaxOrderByAggregateInput
+    _min?: RechargeRequestMinOrderByAggregateInput
+    _sum?: RechargeRequestSumOrderByAggregateInput
+  }
+
+  export type RechargeRequestScalarWhereWithAggregatesInput = {
+    AND?: RechargeRequestScalarWhereWithAggregatesInput | RechargeRequestScalarWhereWithAggregatesInput[]
+    OR?: RechargeRequestScalarWhereWithAggregatesInput[]
+    NOT?: RechargeRequestScalarWhereWithAggregatesInput | RechargeRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RechargeRequest"> | string
+    userId?: StringWithAggregatesFilter<"RechargeRequest"> | string
+    amount?: FloatWithAggregatesFilter<"RechargeRequest"> | number
+    senderName?: StringWithAggregatesFilter<"RechargeRequest"> | string
+    receiptUrl?: StringWithAggregatesFilter<"RechargeRequest"> | string
+    status?: EnumRechargeStatusWithAggregatesFilter<"RechargeRequest"> | $Enums.RechargeStatus
+    adminNote?: StringNullableWithAggregatesFilter<"RechargeRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"RechargeRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"RechargeRequest"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -13985,6 +15379,7 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14004,6 +15399,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -14023,6 +15419,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14042,6 +15439,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -14667,6 +16065,89 @@ export namespace Prisma {
     issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RechargeRequestCreateInput = {
+    id?: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRechargeRequestsInput
+  }
+
+  export type RechargeRequestUncheckedCreateInput = {
+    id?: string
+    userId: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RechargeRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRechargeRequestsNestedInput
+  }
+
+  export type RechargeRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RechargeRequestCreateManyInput = {
+    id?: string
+    userId: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RechargeRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RechargeRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14755,6 +16236,12 @@ export namespace Prisma {
     none?: TransactionWhereInput
   }
 
+  export type RechargeRequestListRelationFilter = {
+    every?: RechargeRequestWhereInput
+    some?: RechargeRequestWhereInput
+    none?: RechargeRequestWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -14777,6 +16264,10 @@ export namespace Prisma {
   }
 
   export type TransactionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RechargeRequestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15335,6 +16826,67 @@ export namespace Prisma {
     issuedAt?: SortOrder
   }
 
+  export type EnumRechargeStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RechargeStatus | EnumRechargeStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRechargeStatusFilter<$PrismaModel> | $Enums.RechargeStatus
+  }
+
+  export type RechargeRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    senderName?: SortOrder
+    receiptUrl?: SortOrder
+    status?: SortOrder
+    adminNote?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RechargeRequestAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type RechargeRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    senderName?: SortOrder
+    receiptUrl?: SortOrder
+    status?: SortOrder
+    adminNote?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RechargeRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    amount?: SortOrder
+    senderName?: SortOrder
+    receiptUrl?: SortOrder
+    status?: SortOrder
+    adminNote?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RechargeRequestSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type EnumRechargeStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RechargeStatus | EnumRechargeStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel> | $Enums.RechargeStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRechargeStatusFilter<$PrismaModel>
+    _max?: NestedEnumRechargeStatusFilter<$PrismaModel>
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -15376,6 +16928,13 @@ export namespace Prisma {
     connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
+  export type RechargeRequestCreateNestedManyWithoutUserInput = {
+    create?: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput> | RechargeRequestCreateWithoutUserInput[] | RechargeRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RechargeRequestCreateOrConnectWithoutUserInput | RechargeRequestCreateOrConnectWithoutUserInput[]
+    createMany?: RechargeRequestCreateManyUserInputEnvelope
+    connect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -15415,6 +16974,13 @@ export namespace Prisma {
     connectOrCreate?: TransactionCreateOrConnectWithoutUserInput | TransactionCreateOrConnectWithoutUserInput[]
     createMany?: TransactionCreateManyUserInputEnvelope
     connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type RechargeRequestUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput> | RechargeRequestCreateWithoutUserInput[] | RechargeRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RechargeRequestCreateOrConnectWithoutUserInput | RechargeRequestCreateOrConnectWithoutUserInput[]
+    createMany?: RechargeRequestCreateManyUserInputEnvelope
+    connect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -15517,6 +17083,20 @@ export namespace Prisma {
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
+  export type RechargeRequestUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput> | RechargeRequestCreateWithoutUserInput[] | RechargeRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RechargeRequestCreateOrConnectWithoutUserInput | RechargeRequestCreateOrConnectWithoutUserInput[]
+    upsert?: RechargeRequestUpsertWithWhereUniqueWithoutUserInput | RechargeRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RechargeRequestCreateManyUserInputEnvelope
+    set?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    disconnect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    delete?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    connect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    update?: RechargeRequestUpdateWithWhereUniqueWithoutUserInput | RechargeRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RechargeRequestUpdateManyWithWhereWithoutUserInput | RechargeRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RechargeRequestScalarWhereInput | RechargeRequestScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -15595,6 +17175,20 @@ export namespace Prisma {
     update?: TransactionUpdateWithWhereUniqueWithoutUserInput | TransactionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TransactionUpdateManyWithWhereWithoutUserInput | TransactionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type RechargeRequestUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput> | RechargeRequestCreateWithoutUserInput[] | RechargeRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RechargeRequestCreateOrConnectWithoutUserInput | RechargeRequestCreateOrConnectWithoutUserInput[]
+    upsert?: RechargeRequestUpsertWithWhereUniqueWithoutUserInput | RechargeRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RechargeRequestCreateManyUserInputEnvelope
+    set?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    disconnect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    delete?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    connect?: RechargeRequestWhereUniqueInput | RechargeRequestWhereUniqueInput[]
+    update?: RechargeRequestUpdateWithWhereUniqueWithoutUserInput | RechargeRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RechargeRequestUpdateManyWithWhereWithoutUserInput | RechargeRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RechargeRequestScalarWhereInput | RechargeRequestScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -15876,6 +17470,24 @@ export namespace Prisma {
     update?: XOR<XOR<EnrollmentUpdateToOneWithWhereWithoutCertificateInput, EnrollmentUpdateWithoutCertificateInput>, EnrollmentUncheckedUpdateWithoutCertificateInput>
   }
 
+  export type UserCreateNestedOneWithoutRechargeRequestsInput = {
+    create?: XOR<UserCreateWithoutRechargeRequestsInput, UserUncheckedCreateWithoutRechargeRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRechargeRequestsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumRechargeStatusFieldUpdateOperationsInput = {
+    set?: $Enums.RechargeStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutRechargeRequestsNestedInput = {
+    create?: XOR<UserCreateWithoutRechargeRequestsInput, UserUncheckedCreateWithoutRechargeRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRechargeRequestsInput
+    upsert?: UserUpsertWithoutRechargeRequestsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRechargeRequestsInput, UserUpdateWithoutRechargeRequestsInput>, UserUncheckedUpdateWithoutRechargeRequestsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -16117,6 +17729,23 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumRechargeStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RechargeStatus | EnumRechargeStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRechargeStatusFilter<$PrismaModel> | $Enums.RechargeStatus
+  }
+
+  export type NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RechargeStatus | EnumRechargeStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RechargeStatus[] | ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel> | $Enums.RechargeStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRechargeStatusFilter<$PrismaModel>
+    _max?: NestedEnumRechargeStatusFilter<$PrismaModel>
+  }
+
   export type SessionCreateWithoutUserInput = {
     id?: string
     token: string
@@ -16265,6 +17894,38 @@ export namespace Prisma {
 
   export type TransactionCreateManyUserInputEnvelope = {
     data: TransactionCreateManyUserInput | TransactionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RechargeRequestCreateWithoutUserInput = {
+    id?: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RechargeRequestUncheckedCreateWithoutUserInput = {
+    id?: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RechargeRequestCreateOrConnectWithoutUserInput = {
+    where: RechargeRequestWhereUniqueInput
+    create: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type RechargeRequestCreateManyUserInputEnvelope = {
+    data: RechargeRequestCreateManyUserInput | RechargeRequestCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -16431,6 +18092,37 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
+  export type RechargeRequestUpsertWithWhereUniqueWithoutUserInput = {
+    where: RechargeRequestWhereUniqueInput
+    update: XOR<RechargeRequestUpdateWithoutUserInput, RechargeRequestUncheckedUpdateWithoutUserInput>
+    create: XOR<RechargeRequestCreateWithoutUserInput, RechargeRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type RechargeRequestUpdateWithWhereUniqueWithoutUserInput = {
+    where: RechargeRequestWhereUniqueInput
+    data: XOR<RechargeRequestUpdateWithoutUserInput, RechargeRequestUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RechargeRequestUpdateManyWithWhereWithoutUserInput = {
+    where: RechargeRequestScalarWhereInput
+    data: XOR<RechargeRequestUpdateManyMutationInput, RechargeRequestUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type RechargeRequestScalarWhereInput = {
+    AND?: RechargeRequestScalarWhereInput | RechargeRequestScalarWhereInput[]
+    OR?: RechargeRequestScalarWhereInput[]
+    NOT?: RechargeRequestScalarWhereInput | RechargeRequestScalarWhereInput[]
+    id?: StringFilter<"RechargeRequest"> | string
+    userId?: StringFilter<"RechargeRequest"> | string
+    amount?: FloatFilter<"RechargeRequest"> | number
+    senderName?: StringFilter<"RechargeRequest"> | string
+    receiptUrl?: StringFilter<"RechargeRequest"> | string
+    status?: EnumRechargeStatusFilter<"RechargeRequest"> | $Enums.RechargeStatus
+    adminNote?: StringNullableFilter<"RechargeRequest"> | string | null
+    createdAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"RechargeRequest"> | Date | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id?: string
     email: string
@@ -16447,6 +18139,7 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -16465,6 +18158,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -16499,6 +18193,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -16517,6 +18212,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutResetTokensInput = {
@@ -16535,6 +18231,7 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutResetTokensInput = {
@@ -16553,6 +18250,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutResetTokensInput = {
@@ -16587,6 +18285,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutResetTokensInput = {
@@ -16605,6 +18304,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutVerifyTokensInput = {
@@ -16623,6 +18323,7 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutVerifyTokensInput = {
@@ -16641,6 +18342,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutVerifyTokensInput = {
@@ -16675,6 +18377,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutVerifyTokensInput = {
@@ -16693,6 +18396,7 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EnrollmentCreateWithoutCourseInput = {
@@ -16759,6 +18463,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEnrollmentsInput = {
@@ -16777,6 +18482,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEnrollmentsInput = {
@@ -16889,6 +18595,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEnrollmentsInput = {
@@ -16907,6 +18614,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CourseUpsertWithoutEnrollmentsInput = {
@@ -17018,6 +18726,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     transactions?: TransactionCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBalanceInput = {
@@ -17036,6 +18745,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBalanceInput = {
@@ -17070,6 +18780,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     transactions?: TransactionUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBalanceInput = {
@@ -17088,6 +18799,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutTransactionsInput = {
@@ -17106,6 +18818,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     balance?: BalanceCreateNestedOneWithoutUserInput
+    rechargeRequests?: RechargeRequestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTransactionsInput = {
@@ -17124,6 +18837,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
+    rechargeRequests?: RechargeRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTransactionsInput = {
@@ -17158,6 +18872,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     balance?: BalanceUpdateOneWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTransactionsInput = {
@@ -17176,6 +18891,7 @@ export namespace Prisma {
     verifyTokens?: EmailVerifyTokenUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
+    rechargeRequests?: RechargeRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type EnrollmentCreateWithoutVideoProgressInput = {
@@ -17298,6 +19014,98 @@ export namespace Prisma {
     videoProgress?: VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput
   }
 
+  export type UserCreateWithoutRechargeRequestsInput = {
+    id?: string
+    email: string
+    fullName: string
+    phone?: string | null
+    passwordHash: string
+    role?: $Enums.Role
+    isActive?: boolean
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    resetTokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    verifyTokens?: EmailVerifyTokenCreateNestedManyWithoutUserInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    balance?: BalanceCreateNestedOneWithoutUserInput
+    transactions?: TransactionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRechargeRequestsInput = {
+    id?: string
+    email: string
+    fullName: string
+    phone?: string | null
+    passwordHash: string
+    role?: $Enums.Role
+    isActive?: boolean
+    emailVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    resetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    verifyTokens?: EmailVerifyTokenUncheckedCreateNestedManyWithoutUserInput
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    balance?: BalanceUncheckedCreateNestedOneWithoutUserInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRechargeRequestsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRechargeRequestsInput, UserUncheckedCreateWithoutRechargeRequestsInput>
+  }
+
+  export type UserUpsertWithoutRechargeRequestsInput = {
+    update: XOR<UserUpdateWithoutRechargeRequestsInput, UserUncheckedUpdateWithoutRechargeRequestsInput>
+    create: XOR<UserCreateWithoutRechargeRequestsInput, UserUncheckedCreateWithoutRechargeRequestsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRechargeRequestsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRechargeRequestsInput, UserUncheckedUpdateWithoutRechargeRequestsInput>
+  }
+
+  export type UserUpdateWithoutRechargeRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    resetTokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    verifyTokens?: EmailVerifyTokenUpdateManyWithoutUserNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    balance?: BalanceUpdateOneWithoutUserNestedInput
+    transactions?: TransactionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRechargeRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    resetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    verifyTokens?: EmailVerifyTokenUncheckedUpdateManyWithoutUserNestedInput
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type SessionCreateManyUserInput = {
     id?: string
     token: string
@@ -17336,6 +19144,17 @@ export namespace Prisma {
     amount: number
     description?: string | null
     createdAt?: Date | string
+  }
+
+  export type RechargeRequestCreateManyUserInput = {
+    id?: string
+    amount: number
+    senderName: string
+    receiptUrl: string
+    status?: $Enums.RechargeStatus
+    adminNote?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -17460,6 +19279,39 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RechargeRequestUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RechargeRequestUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RechargeRequestUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    senderName?: StringFieldUpdateOperationsInput | string
+    receiptUrl?: StringFieldUpdateOperationsInput | string
+    status?: EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+    adminNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EnrollmentCreateManyCourseInput = {
