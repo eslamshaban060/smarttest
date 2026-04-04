@@ -9,7 +9,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-
+import { Header } from "@/components/layout/Header";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -42,6 +42,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Header />
       <main className="flex-1">
         {/* ── Hero strip ── */}
         <section

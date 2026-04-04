@@ -4,11 +4,12 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { FeaturedBook } from "@/components/sections/FeaturedBook";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CTABanner } from "@/components/sections/CTABanner";
-
+import { Header } from "@/components/layout/Header";
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
+        <Header />
         <Hero />
         <WhatWeOffer />
         <WhyChooseUs />

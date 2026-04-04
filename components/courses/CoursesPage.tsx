@@ -17,7 +17,7 @@ import {
   GraduationCap,
   Loader2,
 } from "lucide-react";
-
+import { Header } from "../layout/Header";
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Course {
   id: string;
@@ -98,6 +98,8 @@ export default function CoursesPage() {
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen bg-[#f4f6f9]">
+      <Header />
+
       {/* ══ HERO ════════════════════════════════════════════════════════════ */}
       <section className="relative bg-[#0a2540] overflow-hidden">
         {/* bg layers */}

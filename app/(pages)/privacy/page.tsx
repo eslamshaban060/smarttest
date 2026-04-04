@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/app/hooks/useLanguage";
-
+import { Header } from "@/components/layout/Header";
 export default function PrivacyPage() {
   const { t, isRTL } = useLanguage();
 

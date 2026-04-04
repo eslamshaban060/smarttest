@@ -6,6 +6,7 @@ import { AuthCard } from "@/components/auth/AuthCard";
 import { Field, SubmitButton, Alert } from "@/components/auth/FormFields";
 import { useLanguage } from "@/app/hooks/useLanguage";
 import { Mail } from "lucide-react";
+import { Header } from "@/components/layout/Header";
 
 export default function ForgotPasswordPage() {
   const { t, isRTL } = useLanguage();
