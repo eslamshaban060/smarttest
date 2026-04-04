@@ -46,13 +46,13 @@ export const Header = () => {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
+            {/* <button
               onClick={() => setLang(lang === "en" ? "ar" : "en")}
               className="hidden sm:flex items-center gap-1.5 text-white/55 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.09] rounded-lg px-3 py-1.5 text-[12.5px] font-medium transition-all cursor-pointer"
             >
               <Globe className="w-3.5 h-3.5" />
               {lang === "en" ? "ع" : "EN"}
-            </button>
+            </button> */}
             <Link
               href="/auth/login"
               className="hidden sm:flex bg-secondary hover:bg-secondary/90 text-white text-[13.5px] font-semibold px-4 py-2 rounded-xl shadow-lg shadow-secondary/20 hover:-translate-y-0.5 transition-all"
@@ -147,7 +147,7 @@ export const Header = () => {
                 >
                   {t("Login", "تسجيل الدخول")}
                 </Link>
-                <button
+                {/* <button
                   onClick={() => {
                     setLang(lang === "en" ? "ar" : "en");
                     setOpen(false);
@@ -156,7 +156,7 @@ export const Header = () => {
                 >
                   <Globe className="w-4 h-4" />
                   {lang === "en" ? "التبديل إلى العربية" : "Switch to English"}
-                </button>
+                </button> */}
               </div>
             </motion.div>
           </>
