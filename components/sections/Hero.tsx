@@ -110,7 +110,7 @@ export const Hero = () => {
                 href="/about"
                 className="inline-flex items-center gap-2 bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] text-white/80 font-medium px-7 py-3.5 rounded-2xl transition-all text-[15px]"
               >
-                {t("About Prof. Nada", "عن أ.د. ابتسام")}
+                {t("About Prof. Ebtessam", "عن أ.د. ابتسام")}
               </Link>
             </motion.div>
 
