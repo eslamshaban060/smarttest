@@ -146,7 +146,7 @@
 //       )}
 
 //       {/* ── Header ── */}
-//       <div className="bg-[#0a2540] relative overflow-hidden">
+//       <div className="bg-primary relative overflow-hidden">
 //         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
 //         <div className="max-w-5xl mx-auto px-6 py-8 relative z-10">
 //           {/* top bar */}
@@ -165,7 +165,7 @@
 
 //           {/* avatar + name */}
 //           <div className={`flex items-center gap-5 mb-8 ${isRTL ? "" : ""}`}>
-//             <div className="w-16 h-16 rounded-2xl bg-[#00b4d8]/20 border border-[#00b4d8]/30 flex items-center justify-center flex-shrink-0">
+//             <div className="w-16 h-16 rounded-2xl bg-secondary/20 border border-[#00b4d8]/30 flex items-center justify-center flex-shrink-0">
 //               <span className="text-[#00b4d8] font-serif font-bold text-[26px]">
 //                 {profile.fullName.charAt(0).toUpperCase()}
 //               </span>
@@ -386,8 +386,8 @@
 //         {activeTab === "balance" && (
 //           <div className="space-y-6">
 //             {/* balance card */}
-//             <div className="bg-[#0a2540] rounded-3xl p-7 relative overflow-hidden">
-//               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#00b4d8]/[0.1] rounded-full blur-3xl" />
+//             <div className="bg-primary rounded-3xl p-7 relative overflow-hidden">
+//               <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/[0.1] rounded-full blur-3xl" />
 //               <div className="relative z-10">
 //                 {/* account ID */}
 //                 <div
@@ -414,7 +414,7 @@
 
 //                 <button
 //                   onClick={() => setShowRecharge(true)}
-//                   className={`inline-flex items-center gap-2 bg-[#00b4d8] hover:bg-[#00b4d8]/90 text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/20 transition-all hover:-translate-y-0.5 ${isRTL ? "" : ""}`}
+//                   className={`inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/20 transition-all hover:-translate-y-0.5 ${isRTL ? "" : ""}`}
 //                 >
 //                   <Plus className="w-4 h-4" />
 //                   {t("Recharge Balance", "شحن الرصيد")}
@@ -547,7 +547,7 @@
 //           <div className={`flex items-center gap-3 ${isRTL ? "" : ""}`}>
 //             <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
 //               <div
-//                 className="h-full bg-[#00b4d8] rounded-full transition-all"
+//                 className="h-full bg-secondary rounded-full transition-all"
 //                 style={{ width: `${enrollment.progress}%` }}
 //               />
 //             </div>
@@ -726,7 +726,7 @@
 //           <button
 //             type="submit"
 //             disabled={saving}
-//             className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
+//             className={`flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
 //           >
 //             {saving ? (
 //               <>
@@ -793,7 +793,7 @@
 //           <button
 //             type="submit"
 //             disabled={pwSaving}
-//             className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
+//             className={`flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
 //           >
 //             {pwSaving ? (
 //               <>
@@ -911,7 +911,7 @@
 //                 </p>
 
 //                 <div className={`flex items-center gap-3 ${isRTL ? "" : ""}`}>
-//                   <div className="w-8 h-8 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
+//                   <div className="w-8 h-8 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
 //                     <Wallet className="w-4 h-4 text-[#00b4d8]" />
 //                   </div>
 //                   <div className={isRTL ? "text-right" : ""}>
@@ -1002,7 +1002,7 @@
 //                 <button
 //                   type="submit"
 //                   disabled={sending}
-//                   className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl py-3.5 text-[15px] transition-all"
+//                   className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl py-3.5 text-[15px] transition-all"
 //                 >
 //                   {sending ? (
 //                     <>
@@ -1180,7 +1180,7 @@ export function ProfileClient() {
         )}
 
         {/* ── Header ── */}
-        <div className="bg-[#0a2540] relative overflow-hidden">
+        <div className="bg-primary relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(0,180,216,0.12),transparent_70%)]" />
           <div className="absolute top-0 right-0 w-72 h-72 rounded-full border border-white/[0.03] translate-x-1/3 -translate-y-1/3" />
 
@@ -1430,8 +1430,8 @@ export function ProfileClient() {
           {/* BALANCE */}
           {activeTab === "balance" && (
             <div className="space-y-6">
-              <div className="bg-[#0a2540] rounded-3xl p-7 relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#00b4d8]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="bg-primary rounded-3xl p-7 relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
                 <div className="relative z-10">
                   <div
                     className={`flex items-center gap-2 mb-5 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}
@@ -1452,7 +1452,7 @@ export function ProfileClient() {
                   <div className="text-white/30 text-[14px] mb-7">EGP</div>
                   <button
                     onClick={() => setShowRecharge(true)}
-                    className={`inline-flex items-center gap-2 bg-[#00b4d8] hover:bg-[#0096b4] text-white font-bold px-6 py-3 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/25 transition-all hover:-translate-y-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
+                    className={`inline-flex items-center gap-2 bg-secondary hover:bg-[#0096b4] text-white font-bold px-6 py-3 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/25 transition-all hover:-translate-y-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
                   >
                     <Plus className="w-4 h-4" />
                     {t("Recharge Balance", "شحن الرصيد")}
@@ -1588,7 +1588,7 @@ function CourseCard({
           >
             <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-700 ${enrollment.progress === 100 ? "bg-emerald-500" : "bg-[#00b4d8]"}`}
+                className={`h-full rounded-full transition-all duration-700 ${enrollment.progress === 100 ? "bg-emerald-500" : "bg-secondary"}`}
                 style={{ width: `${enrollment.progress}%` }}
               />
             </div>
@@ -1764,7 +1764,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl px-6 py-3 text-[14px] transition-all"
+            className="flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl px-6 py-3 text-[14px] transition-all"
           >
             {saving ? (
               <>
@@ -1821,7 +1821,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={pwSaving}
-            className="flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl px-6 py-3 text-[14px] transition-all"
+            className="flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl px-6 py-3 text-[14px] transition-all"
           >
             {pwSaving ? (
               <>
@@ -2084,7 +2084,7 @@ function RechargeModal({
                       </div>
                     </div>
                   ) : (
-                    <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 hover:border-[#00b4d8] rounded-2xl p-8 cursor-pointer transition-all group bg-slate-50/50 hover:bg-[#00b4d8]/[0.02]">
+                    <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 hover:border-[#00b4d8] rounded-2xl p-8 cursor-pointer transition-all group bg-slate-50/50 hover:bg-secondary/[0.02]">
                       <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 group-hover:border-[#00b4d8]/40 flex items-center justify-center mb-4 shadow-sm transition-all">
                         <ImagePlus className="w-6 h-6 text-slate-300 group-hover:text-[#00b4d8] transition-colors" />
                       </div>
@@ -2120,7 +2120,7 @@ function RechargeModal({
                 <button
                   type="submit"
                   disabled={sending || !receiptB64 || !amount || !senderName}
-                  className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#0a2540]/15"
+                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#0a2540]/15"
                 >
                   {sending ? (
                     <>

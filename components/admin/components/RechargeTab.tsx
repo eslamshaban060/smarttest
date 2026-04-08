@@ -130,7 +130,7 @@
 //                       ? "bg-emerald-500 text-white shadow-sm"
 //                       : f.key === "REJECTED"
 //                         ? "bg-red-500 text-white shadow-sm"
-//                         : "bg-[#0a2540] text-white shadow-sm"
+//                         : "bg-primary text-white shadow-sm"
 //                   : "bg-white text-slate-500 border border-slate-200 hover:border-slate-300"
 //               }`}
 //             >
@@ -673,7 +673,7 @@ export function RechargeTab({
                       ? "bg-emerald-500 text-white shadow-sm"
                       : f.key === "REJECTED"
                         ? "bg-red-500 text-white shadow-sm"
-                        : "bg-[#0a2540] text-white shadow-sm"
+                        : "bg-primary text-white shadow-sm"
                   : "bg-white text-slate-500 border border-slate-200 hover:border-slate-300"
               }`}
             >

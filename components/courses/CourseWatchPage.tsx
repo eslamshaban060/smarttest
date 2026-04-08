@@ -93,7 +93,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-[#0a2540] flex items-center justify-center">
+      <div className="min-h-screen bg-primary flex items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#00b4d8] animate-spin" />
       </div>
     );
@@ -168,7 +168,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
       className="min-h-screen bg-[#0d1b2e] flex flex-col"
     >
       {/* ── Top bar ─────────────────────────────────────────────────────── */}
-      <header className="bg-[#0a2540] border-b border-white/[0.07] px-6 py-4 flex items-center justify-between flex-shrink-0 z-30">
+      <header className="bg-primary border-b border-white/[0.07] px-6 py-4 flex items-center justify-between flex-shrink-0 z-30">
         <div
           className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}
         >
@@ -203,7 +203,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
             <div className="hidden sm:flex items-center gap-2">
               <div className="w-32 h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className={`h-full rounded-full transition-all duration-700 ${progress === 100 ? "bg-emerald-400" : "bg-[#00b4d8]"}`}
+                  className={`h-full rounded-full transition-all duration-700 ${progress === 100 ? "bg-emerald-400" : "bg-secondary"}`}
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -244,7 +244,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
               />
             ) : (
               /* not enrolled overlay */
-              <div className="w-full h-full flex flex-col items-center justify-center bg-[#0a2540] gap-6 p-8">
+              <div className="w-full h-full flex flex-col items-center justify-center bg-primary gap-6 p-8">
                 <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center">
                   <Lock className="w-9 h-9 text-white/30" />
                 </div>
@@ -280,7 +280,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                 <button
                   onClick={enroll}
                   disabled={enrolling}
-                  className="flex items-center gap-2 bg-[#00b4d8] hover:bg-[#0096b4] text-white font-bold px-8 py-4 rounded-2xl text-[15px] transition-all shadow-2xl shadow-[#00b4d8]/30 hover:-translate-y-0.5 disabled:opacity-60"
+                  className="flex items-center gap-2 bg-secondary hover:bg-[#0096b4] text-white font-bold px-8 py-4 rounded-2xl text-[15px] transition-all shadow-2xl shadow-[#00b4d8]/30 hover:-translate-y-0.5 disabled:opacity-60"
                 >
                   {enrolling ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -319,7 +319,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                   className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-bold border transition-all flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""} ${
                     currentWatched
                       ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30 cursor-default"
-                      : "bg-white/10 text-white/70 border-white/20 hover:bg-[#00b4d8]/20 hover:text-[#00b4d8] hover:border-[#00b4d8]/40"
+                      : "bg-white/10 text-white/70 border-white/20 hover:bg-secondary/20 hover:text-[#00b4d8] hover:border-[#00b4d8]/40"
                   }`}
                 >
                   {markingDone ? (
@@ -367,7 +367,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                     setActiveIdx((i) => Math.min(totalVideos - 1, i + 1))
                   }
                   disabled={activeIdx === totalVideos - 1}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#00b4d8] hover:bg-[#0096b4] text-white disabled:opacity-30 text-[13px] font-bold transition-all shadow-lg shadow-[#00b4d8]/20"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary hover:bg-[#0096b4] text-white disabled:opacity-30 text-[13px] font-bold transition-all shadow-lg shadow-[#00b4d8]/20"
                 >
                   {t("Next", "التالي")}
                   {isRTL ? (
@@ -383,7 +383,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
 
         {/* ── Sidebar ─────────────────────────────────────────────────── */}
         <div
-          className={`w-80 bg-[#0a2540] border-${isRTL ? "l" : "r"} border-white/[0.07] flex flex-col flex-shrink-0 overflow-hidden`}
+          className={`w-80 bg-primary border-${isRTL ? "l" : "r"} border-white/[0.07] flex flex-col flex-shrink-0 overflow-hidden`}
         >
           {/* sidebar header */}
           <div className="p-5 border-b border-white/[0.07] flex-shrink-0">
@@ -444,7 +444,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                   disabled={!enrolled}
                   className={`w-full flex items-center gap-3 px-5 py-4 text-${isRTL ? "right" : "left"} transition-all group ${isRTL ? "flex-row-reverse" : ""} ${
                     isActive
-                      ? "bg-[#00b4d8]/15 border-r-2 border-[#00b4d8]"
+                      ? "bg-secondary/15 border-r-2 border-[#00b4d8]"
                       : "hover:bg-white/[0.04]"
                   } ${!enrolled ? "cursor-default" : "cursor-pointer"}`}
                 >
@@ -453,7 +453,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                       watched
                         ? "bg-emerald-500/20"
                         : isActive
-                          ? "bg-[#00b4d8]/20"
+                          ? "bg-secondary/20"
                           : "bg-white/[0.06]"
                     }`}
                   >
@@ -479,7 +479,7 @@ export default function CourseWatchPage({ courseId }: { courseId: string }) {
                   </div>
 
                   {isActive && (
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#00b4d8] flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
                   )}
                 </button>
               );

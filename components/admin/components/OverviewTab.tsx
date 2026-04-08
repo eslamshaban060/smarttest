@@ -101,7 +101,7 @@ export function OverviewTab({
                 key={u.id}
                 className={`flex items-center gap-3 ${isRTL ? "" : ""}`}
               >
-                <div className="w-9 h-9 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                   <span className="text-[#00b4d8] font-bold text-[12px]">
                     {u.fullName.charAt(0).toUpperCase()}
                   </span>

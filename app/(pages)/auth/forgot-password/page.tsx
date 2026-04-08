@@ -42,7 +42,7 @@ export default function ForgotPasswordPage() {
         subtitleAr="راجع بريدك الإلكتروني"
       >
         <div className="flex flex-col items-center gap-4 py-4 text-center">
-          <div className="w-16 h-16 rounded-full bg-[#00b4d8]/10 border border-[#00b4d8]/20 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-secondary/10 border border-[#00b4d8]/20 flex items-center justify-center">
             <Mail className="w-7 h-7 text-[#00b4d8]" />
           </div>
           <p className="text-slate-500 text-[14px] leading-relaxed">

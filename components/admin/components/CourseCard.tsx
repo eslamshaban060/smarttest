@@ -79,7 +79,7 @@ export function CourseCard({
             {c.published ? t("Published", "منشور") : t("Draft", "مسودة")}
           </span>
           {c.price === 0 ? (
-            <span className="text-[10px] px-2.5 py-1 rounded-full font-bold bg-[#00b4d8] text-white shadow-sm">
+            <span className="text-[10px] px-2.5 py-1 rounded-full font-bold bg-secondary text-white shadow-sm">
               {t("Free", "مجاني")}
             </span>
           ) : (
@@ -169,7 +169,7 @@ export function CourseCard({
           </button>
           <button
             onClick={onEdit}
-            className="w-10 h-10 rounded-xl bg-[#f4f6f9] hover:bg-[#00b4d8]/10 text-slate-400 hover:text-[#00b4d8] flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-xl bg-[#f4f6f9] hover:bg-secondary/10 text-slate-400 hover:text-[#00b4d8] flex items-center justify-center transition-colors"
             title={t("Edit", "تعديل")}
           >
             <Edit2 className="w-4 h-4" />

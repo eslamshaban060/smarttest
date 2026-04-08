@@ -26,15 +26,15 @@ export function AuthCard({
     <div className="min-h-screen bg-[#f4f6f9] flex items-center justify-center p-4">
       {/* bg blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] max-w-[700px] rounded-full bg-[#00b4d8]/[0.07] blur-[120px]" />
-        <div className="absolute -bottom-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[500px] rounded-full bg-[#0a2540]/[0.04] blur-[100px]" />
+        <div className="absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] max-w-[700px] rounded-full bg-secondary/[0.07] blur-[120px]" />
+        <div className="absolute -bottom-[10%] -left-[5%] w-[40vw] h-[40vw] max-w-[500px] rounded-full bg-primary/[0.04] blur-[100px]" />
       </div>
 
       <div className="w-full max-w-md relative z-10">
         {/* logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex flex-col items-center gap-1.5">
-            <div className="w-11 h-11 rounded-2xl bg-[#0a2540] flex items-center justify-center shadow-lg">
+            <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
               <span className="text-[#00b4d8] font-serif font-bold text-[18px]">
                 S
               </span>

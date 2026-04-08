@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -33,7 +33,6 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 
-  /* ✅ هنا بنربط primary/secondary بالـ variables */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -128,6 +127,330 @@
   --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-ring: #00b4d8;
 
+  --chart-1: #00b4d8;
+  --chart-2: #48cae4;
+  --chart-3: #e9c46a;
+  --chart-4: #0d3060;
+  --chart-5: #94a3b8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+
+:root {
+  --radius: 0.75rem;
+
+  --primary: #1a3a5c; 
+  --primary-foreground: #ffffff;
+  --secondary: #00b4d8;
+  --secondary-foreground: #ffffff;
+  --accent: #00b4d8;
+  --accent-foreground: #ffffff;
+
+  --background: #eef2f7; 
+  --foreground: #1a3a5c;
+  --card: #ffffff;
+  --card-foreground: #1a3a5c;
+  --popover: #ffffff;
+  --popover-foreground: #1a3a5c;
+  --muted: #dde6f0;
+  --muted-foreground: #5a7a99;
+  --border: rgba(26, 58, 92, 0.12);
+  --input: rgba(26, 58, 92, 0.1);
+  --ring: #00b4d8;
+  --destructive: oklch(0.6 0.845 0);
+  --destructive-foreground: #ffffff;
+
+  --sidebar: #dde6f0;
+  --sidebar-foreground: #1a3a5c;
+  --sidebar-primary: #1a3a5c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ccdaea;
+  --sidebar-accent-foreground: #1a3a5c;
+  --sidebar-border: rgba(26, 58, 92, 0.1);
+  --sidebar-ring: #00b4d8;
+
+  --chart-1: #00b4d8;
+  --chart-2: #1a3a5c;
+  --chart-3: #48cae4;
+  --chart-4: #e9c46a;
+  --chart-5: #2a5080;
+}
+
+.dark {
+  --primary: #0a2540;
+  --primary-foreground: #ffffff;
+  --secondary: #00b4d8;
+  --secondary-foreground: #ffffff;
+  --accent: #00b4d8;
+  --accent-foreground: #ffffff;
+
+  --background: #06101f;
+  --foreground: #f8f9fc;
+  --card: #0d1f35;
+  --card-foreground: #f8f9fc;
+  --popover: #0d1f35;
+  --popover-foreground: #f8f9fc;
+  --muted: #0d1f35;
+  --muted-foreground: #94a3b8;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #00b4d8;
+  --destructive: oklch(0.6 0.845 0);
+  --destructive-foreground: #ffffff;
+
+  --sidebar: #0a2540;
+  --sidebar-foreground: #f8f9fc;
+  --sidebar-primary: #00b4d8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0d1f35;
+  --sidebar-accent-foreground: #f8f9fc;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #00b4d8;
+
+  --chart-1: #00b4d8;
+  --chart-2: #48cae4;
+  --chart-3: #e9c46a;
+  --chart-4: #0d3060;
+  --chart-5: #94a3b8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LIGHT MODE
+   Palette: warm white + soft sky blue tones + navy accents
+   الفكرة: خلفية بيضاء دافية، كروت بيضاء ناصعة، primary navy، secondary cyan
+───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --primary: #0f3460; /* navy عميق للنصوص والأزرار */
+  --primary-foreground: #ffffff;
+  --secondary: #00b4d8; /* cyan أكاديمي */
+  --secondary-foreground: #ffffff;
+  --accent: #0096c7; /* cyan أغمق للـ hover */
+  --accent-foreground: #ffffff;
+
+  /* Backgrounds */
+  --background: #f0f6ff; /* أبيض-سماوي هادي جداً */
+  --foreground: #0f3460; /* navy للنصوص */
+
+  /* Cards & Popovers */
+  --card: #ffffff;
+  --card-foreground: #0f3460;
+  --popover: #ffffff;
+  --popover-foreground: #0f3460;
+
+  /* Muted */
+  --muted: #daeaf7; /* سماوي فاتح جداً */
+  --muted-foreground: #4a7a9b; /* slate-مزرق */
+
+  /* Borders & Inputs */
+  --border: rgba(15, 52, 96, 0.1);
+  --input: rgba(15, 52, 96, 0.08);
+  --ring: #00b4d8;
+
+  /* Destructive */
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+
+  /* Sidebar */
+  --sidebar: #e2f0fb;
+  --sidebar-foreground: #0f3460;
+  --sidebar-primary: #0f3460;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #c8e0f4;
+  --sidebar-accent-foreground: #0f3460;
+  --sidebar-border: rgba(15, 52, 96, 0.08);
+  --sidebar-ring: #00b4d8;
+
+  /* Charts */
+  --chart-1: #00b4d8;
+  --chart-2: #0f3460;
+  --chart-3: #48cae4;
+  --chart-4: #e9c46a;
+  --chart-5: #0096c7;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DARK MODE
+   Palette: deep navy + midnight blue + cyan glow
+   الفكرة: خلفية navy داكن جداً، كروت أغمق بدرجة، secondary cyan متوهج
+───────────────────────────────────────────────────────────────────────────── */
+.dark {
+  /* Brand */
+  --primary: #0a2540;
+  --primary-foreground: #ffffff;
+  --secondary: #00b4d8;
+  --secondary-foreground: #ffffff;
+  --accent: #00b4d8;
+  --accent-foreground: #ffffff;
+
+  /* Backgrounds */
+  --background: #06101f; /* midnight navy */
+  --foreground: #e8f4fd; /* أبيض-سماوي للنصوص */
+
+  /* Cards & Popovers */
+  --card: #0d1f35;
+  --card-foreground: #e8f4fd;
+  --popover: #0d1f35;
+  --popover-foreground: #e8f4fd;
+
+  /* Muted */
+  --muted: #0d1f35;
+  --muted-foreground: #7aadcc;
+
+  /* Borders & Inputs */
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.07);
+  --ring: #00b4d8;
+
+  /* Destructive */
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+
+  /* Sidebar */
+  --sidebar: #0a2540;
+  --sidebar-foreground: #e8f4fd;
+  --sidebar-primary: #00b4d8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0d1f35;
+  --sidebar-accent-foreground: #e8f4fd;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-ring: #00b4d8;
+
+  /* Charts */
   --chart-1: #00b4d8;
   --chart-2: #48cae4;
   --chart-3: #e9c46a;

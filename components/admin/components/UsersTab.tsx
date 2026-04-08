@@ -152,7 +152,7 @@
 //                       <div
 //                         className={`flex items-center gap-3 ${isRTL ? "" : ""}`}
 //                       >
-//                         <div className="w-9 h-9 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
+//                         <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
 //                           <span className="text-[#00b4d8] font-bold text-[12px]">
 //                             {u.fullName.charAt(0).toUpperCase()}
 //                           </span>
@@ -636,7 +636,7 @@
 //         <button
 //           type="submit"
 //           disabled={loading}
-//           className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all"
+//           className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all"
 //         >
 //           {loading && <Loader2 className="w-4 h-4 animate-spin" />}
 //           {t("Reset Password", "تعيين كلمة المرور")}
@@ -801,7 +801,7 @@ export function UsersTab({
                       <div
                         className={`flex items-center gap-3 ${isRTL ? "" : ""}`}
                       >
-                        <div className="w-9 h-9 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                           <span className="text-[#00b4d8] font-bold text-[12px]">
                             {u.fullName.charAt(0).toUpperCase()}
                           </span>
@@ -1235,7 +1235,7 @@ function PasswordModal({
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all"
+          className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all"
         >
           {loading && <Loader2 className="w-4 h-4 animate-spin" />}
           {t("Reset Password", "تعيين كلمة المرور")}

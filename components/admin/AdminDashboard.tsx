@@ -36,7 +36,7 @@
 //       <Toast msg={toast} onClose={() => setToast(null)} />
 
 //       {/* ══ HEADER ══════════════════════════════════════════════════════════ */}
-//       <header className="bg-[#0a2540] sticky  z-40 shadow-2xl">
+//       <header className="bg-primary sticky  z-40 shadow-2xl">
 //         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,180,216,0.15),transparent_70%)] pointer-events-none" />
 //         <div className="max-w-7xl mx-auto px-8 relative">
 //           {/* top bar */}
@@ -168,7 +168,7 @@ export function AdminDashboard({ currentUserId }: { currentUserId: string }) {
       <Toast msg={toast} onClose={() => setToast(null)} />
 
       {/* ══ HEADER ══════════════════════════════════════════════════════════ */}
-      <header className="bg-[#0a2540] sticky top-0 z-40 py-10 shadow-2xl">
+      <header className="bg-primary sticky top-0 z-40 py-10 shadow-2xl">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,180,216,0.15),transparent_70%)] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-8 relative">
           {/* top bar */}

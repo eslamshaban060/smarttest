@@ -52,7 +52,7 @@ export default function PrivacyPage() {
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen bg-[#f4f6f9]">
       {/* header */}
-      <div className="bg-[#0a2540] relative overflow-hidden">
+      <div className="bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
         <div className="max-w-3xl mx-auto px-6 py-16 relative z-10">
           <p className="text-[#00b4d8]/70 text-[11px] font-bold tracking-[0.25em] uppercase mb-4">

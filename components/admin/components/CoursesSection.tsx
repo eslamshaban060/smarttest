@@ -123,7 +123,7 @@ export function CoursesSection({
         </div>
         <button
           onClick={() => setView("add")}
-          className={`flex items-center gap-2.5 bg-[#0a2540] hover:bg-[#0d3060] text-white font-bold px-6 py-3.5 rounded-xl text-[14px] shadow-lg shadow-[#0a2540]/20 transition-all hover:-translate-y-0.5 active:translate-y-0 ${isRTL ? "" : ""}`}
+          className={`flex items-center gap-2.5 bg-primary hover:bg-[#0d3060] text-white font-bold px-6 py-3.5 rounded-xl text-[14px] shadow-lg shadow-[#0a2540]/20 transition-all hover:-translate-y-0.5 active:translate-y-0 ${isRTL ? "" : ""}`}
         >
           <Plus className="w-4 h-4" />
           {t("Add Course", "إضافة كورس")}
@@ -147,7 +147,7 @@ export function CoursesSection({
           </p>
           <button
             onClick={() => setView("add")}
-            className="inline-flex items-center gap-2 bg-[#0a2540] text-white font-bold px-6 py-3 rounded-xl text-[14px] hover:bg-[#0d3060] transition-all shadow-lg"
+            className="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-xl text-[14px] hover:bg-[#0d3060] transition-all shadow-lg"
           >
             <Plus className="w-4 h-4" />
             {t("Add your first course", "أضف أول كورس")}

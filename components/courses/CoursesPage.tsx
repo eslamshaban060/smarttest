@@ -101,7 +101,7 @@ export default function CoursesPage() {
       <Header />
 
       {/* ══ HERO ════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-[#0a2540] overflow-hidden">
+      <section className="relative bg-primary overflow-hidden">
         {/* bg layers */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,180,216,0.18),transparent)]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00b4d8]/30 to-transparent" />
@@ -114,7 +114,7 @@ export default function CoursesPage() {
         <div className="relative max-w-6xl mx-auto px-8 pt-14 pb-12">
           {/* badge */}
           <div
-            className={`inline-flex items-center gap-2 bg-[#00b4d8]/10 border border-[#00b4d8]/20 rounded-full px-4 py-1.5 mb-7 ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`inline-flex items-center gap-2 bg-secondary/10 border border-[#00b4d8]/20 rounded-full px-4 py-1.5 mb-7 ${isRTL ? "flex-row-reverse" : ""}`}
           >
             <Sparkles className="w-3.5 h-3.5 text-[#00b4d8]" />
             <span className="text-[#00b4d8] text-[12px] font-semibold tracking-wide">
@@ -177,7 +177,7 @@ export default function CoursesPage() {
                 key={i}
                 className={`flex items-center gap-2.5 ${isRTL ? "flex-row-reverse" : ""}`}
               >
-                <div className="w-8 h-8 rounded-lg bg-[#00b4d8]/15 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-secondary/15 flex items-center justify-center">
                   <s.Icon className="w-4 h-4 text-[#00b4d8]" />
                 </div>
                 <div className={isRTL ? "text-right" : ""}>
@@ -205,7 +205,7 @@ export default function CoursesPage() {
               onClick={() => setFilter(f.key)}
               className={`px-4 py-2 rounded-xl text-[13px] font-semibold transition-all ${
                 filter === f.key
-                  ? "bg-[#0a2540] text-white shadow-sm"
+                  ? "bg-primary text-white shadow-sm"
                   : "text-slate-500 hover:text-slate-700 hover:bg-slate-100"
               }`}
             >
@@ -313,7 +313,7 @@ function CourseCard({
           className={`absolute top-3 flex gap-2 ${isRTL ? "right-3" : "left-3"}`}
         >
           {c.price === 0 ? (
-            <span className="text-[11px] px-3 py-1 rounded-full font-bold bg-[#00b4d8] text-white">
+            <span className="text-[11px] px-3 py-1 rounded-full font-bold bg-secondary text-white">
               {t("Free", "مجاني")}
             </span>
           ) : (
@@ -412,10 +412,10 @@ function CourseCard({
             completed
               ? "bg-emerald-50 text-emerald-600 border border-emerald-100 hover:bg-emerald-100"
               : enrolled
-                ? "bg-[#0a2540] text-white hover:bg-[#0d3060] shadow-md shadow-[#0a2540]/15"
+                ? "bg-primary text-white hover:bg-[#0d3060] shadow-md shadow-[#0a2540]/15"
                 : c.price === 0
-                  ? "bg-[#00b4d8] text-white hover:bg-[#0096b4] shadow-md shadow-[#00b4d8]/20"
-                  : "bg-[#0a2540] text-white hover:bg-[#0d3060] shadow-md shadow-[#0a2540]/15"
+                  ? "bg-secondary text-white hover:bg-[#0096b4] shadow-md shadow-[#00b4d8]/20"
+                  : "bg-primary text-white hover:bg-[#0d3060] shadow-md shadow-[#0a2540]/15"
           }`}
         >
           {completed ? (

@@ -71,7 +71,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={pending}
-      className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-4 py-3.5 text-[15px] shadow-lg shadow-[#0a2540]/20 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+      className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-4 py-3.5 text-[15px] shadow-lg shadow-[#0a2540]/20 hover:-translate-y-0.5 active:translate-y-0 transition-all"
     >
       {pending ? (
         <>

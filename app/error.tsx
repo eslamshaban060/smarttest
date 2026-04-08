@@ -38,7 +38,7 @@ export default function Error({
         <div className="flex gap-3 justify-center flex-wrap">
           <button
             onClick={reset}
-            className="inline-flex items-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] text-white font-semibold px-6 py-3 rounded-2xl text-[15px] transition-all"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-[#0d3060] text-white font-semibold px-6 py-3 rounded-2xl text-[15px] transition-all"
           >
             {t("Try Again", "حاول مجدداً")}
           </button>

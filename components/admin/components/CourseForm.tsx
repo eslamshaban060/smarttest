@@ -219,7 +219,7 @@
 //               <div
 //                 className={`flex items-center gap-3 pb-5 mb-6 border-b border-slate-100 ${isRTL ? "" : ""}`}
 //               >
-//                 <div className="w-8 h-8 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center">
+//                 <div className="w-8 h-8 rounded-xl bg-secondary/10 flex items-center justify-center">
 //                   <ImagePlus className="w-4 h-4 text-[#00b4d8]" />
 //                 </div>
 //                 <h3 className="text-[#0a2540] font-bold text-[16px]">
@@ -248,7 +248,7 @@
 //                     key={mode}
 //                     type="button"
 //                     onClick={() => setImageMode(mode)}
-//                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border transition-all ${isRTL ? "" : ""} ${imageMode === mode ? "bg-[#0a2540] text-white border-[#0a2540]" : "bg-white text-slate-500 border-slate-200 hover:border-[#00b4d8]"}`}
+//                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold border transition-all ${isRTL ? "" : ""} ${imageMode === mode ? "bg-primary text-white border-[#0a2540]" : "bg-white text-slate-500 border-slate-200 hover:border-[#00b4d8]"}`}
 //                   >
 //                     <Icon className="w-3.5 h-3.5" />
 //                     {label}
@@ -321,14 +321,14 @@
 //                   <h3 className="text-[#0a2540] font-bold text-[16px]">
 //                     {t("Course Videos", "فيديوهات الكورس")}
 //                   </h3>
-//                   <span className="bg-[#00b4d8]/10 text-[#00b4d8] text-[11px] font-bold px-2.5 py-1 rounded-full">
+//                   <span className="bg-secondary/10 text-[#00b4d8] text-[11px] font-bold px-2.5 py-1 rounded-full">
 //                     {videos.filter((v) => v.url.trim()).length}
 //                   </span>
 //                 </div>
 //                 <button
 //                   type="button"
 //                   onClick={addVideo}
-//                   className={`flex items-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] text-white text-[13px] font-bold px-4 py-2.5 rounded-xl transition-all ${isRTL ? "" : ""}`}
+//                   className={`flex items-center gap-2 bg-primary hover:bg-[#0d3060] text-white text-[13px] font-bold px-4 py-2.5 rounded-xl transition-all ${isRTL ? "" : ""}`}
 //                 >
 //                   <Plus className="w-3.5 h-3.5" />
 //                   {t("Add Video", "إضافة فيديو")}
@@ -345,7 +345,7 @@
 //                     <div
 //                       className={`flex items-center gap-3 p-4 bg-[#f8f9fc] ${isRTL ? "" : ""}`}
 //                     >
-//                       <div className="w-7 h-7 rounded-lg bg-[#0a2540] flex items-center justify-center flex-shrink-0">
+//                       <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
 //                         <span className="text-white font-bold text-[11px]">
 //                           {i + 1}
 //                         </span>
@@ -510,7 +510,7 @@
 //             </div>
 
 //             {/* summary */}
-//             <div className="bg-[#0a2540] rounded-2xl p-6">
+//             <div className="bg-primary rounded-2xl p-6">
 //               <h3 className="font-bold text-[11px] text-white/40 uppercase tracking-[0.15em] mb-5">
 //                 {t("Summary", "ملخص")}
 //               </h3>
@@ -566,7 +566,7 @@
 //               <button
 //                 type="submit"
 //                 disabled={loading}
-//                 className="w-full flex items-center justify-center gap-2 bg-[#00b4d8] hover:bg-[#0096b4] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#00b4d8]/25 hover:-translate-y-0.5"
+//                 className="w-full flex items-center justify-center gap-2 bg-secondary hover:bg-[#0096b4] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#00b4d8]/25 hover:-translate-y-0.5"
 //               >
 //                 {loading && <Loader2 className="w-4 h-4 animate-spin" />}
 //                 {isEdit
@@ -592,7 +592,7 @@
 //             className={`flex items-center justify-between mb-7 ${isRTL ? "" : ""}`}
 //           >
 //             <div className={`flex items-center gap-3 ${isRTL ? "" : ""}`}>
-//               <div className="w-9 h-9 rounded-xl bg-[#0a2540] flex items-center justify-center">
+//               <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
 //                 <span className="text-white font-bold text-[13px]">
 //                   {videoPopup + 1}
 //                 </span>
@@ -675,7 +675,7 @@
 
 //           <button
 //             onClick={() => setVideoPopup(null)}
-//             className="mt-6 w-full bg-[#0a2540] hover:bg-[#0d3060] text-white font-bold rounded-xl py-4 text-[14px] transition-all"
+//             className="mt-6 w-full bg-primary hover:bg-[#0d3060] text-white font-bold rounded-xl py-4 text-[14px] transition-all"
 //           >
 //             {t("Done ✓", "تم ✓")}
 //           </button>
@@ -1059,7 +1059,7 @@ export function CourseForm({
                     key={m}
                     type="button"
                     onClick={() => setImageMode(m)}
-                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[13px] font-semibold border transition-all ${isRTL ? "flex-row-reverse" : ""} ${imageMode === m ? "bg-[#0a2540] text-white border-[#0a2540]" : "bg-white text-slate-500 border-slate-200 hover:border-[#00b4d8]"}`}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[13px] font-semibold border transition-all ${isRTL ? "flex-row-reverse" : ""} ${imageMode === m ? "bg-primary text-white border-[#0a2540]" : "bg-white text-slate-500 border-slate-200 hover:border-[#00b4d8]"}`}
                   >
                     {m === "url" ? (
                       <LinkIcon className="w-3.5 h-3.5" />
@@ -1124,7 +1124,7 @@ export function CourseForm({
                 <button
                   type="button"
                   onClick={addLesson}
-                  className={`flex items-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] text-white text-[13px] font-bold px-4 py-2.5 rounded-xl transition-all ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`flex items-center gap-2 bg-primary hover:bg-[#0d3060] text-white text-[13px] font-bold px-4 py-2.5 rounded-xl transition-all ${isRTL ? "flex-row-reverse" : ""}`}
                 >
                   <Plus className="w-3.5 h-3.5" />
                   {t("Add Lesson", "إضافة درس")}
@@ -1313,7 +1313,7 @@ export function CourseForm({
             </div>
 
             {/* summary */}
-            <div className="bg-[#0a2540] rounded-2xl p-6">
+            <div className="bg-primary rounded-2xl p-6">
               <p className="text-white/40 text-[11px] uppercase tracking-wider mb-4">
                 {t("Summary", "ملخص")}
               </p>
@@ -1369,7 +1369,7 @@ export function CourseForm({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-[#00b4d8] hover:bg-[#0096b4] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#00b4d8]/25 hover:-translate-y-0.5"
+                className="w-full flex items-center justify-center gap-2 bg-secondary hover:bg-[#0096b4] disabled:opacity-60 text-white font-bold rounded-xl py-4 text-[15px] transition-all shadow-lg shadow-[#00b4d8]/25 hover:-translate-y-0.5"
               >
                 {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                 {isEdit
@@ -1434,7 +1434,7 @@ function LessonBlock({
         onClick={onToggle}
         className={`w-full flex items-center gap-4 p-5 hover:bg-slate-50 transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
       >
-        <div className="w-8 h-8 rounded-xl bg-[#0a2540] flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
           <span className="text-white font-bold text-[12px]">{index + 1}</span>
         </div>
         <div className={`flex-1 min-w-0 ${isRTL ? "text-right" : ""}`}>
@@ -1532,7 +1532,7 @@ function LessonBlock({
               className={`flex items-center gap-3 cursor-pointer select-none mb-4 ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <div
-                className={`w-10 h-5 rounded-full transition-colors relative flex-shrink-0 ${lesson.hasQuiz ? "bg-[#00b4d8]" : "bg-slate-300"}`}
+                className={`w-10 h-5 rounded-full transition-colors relative flex-shrink-0 ${lesson.hasQuiz ? "bg-secondary" : "bg-slate-300"}`}
               >
                 <div
                   className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all ${lesson.hasQuiz ? (isRTL ? "right-0.5" : "left-5") : isRTL ? "right-5" : "left-0.5"}`}
@@ -1704,7 +1704,7 @@ function Card({
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-7">
       <div className="flex items-center gap-3 pb-5 mb-6 border-b border-slate-100">
-        <div className="w-8 h-8 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-xl bg-secondary/10 flex items-center justify-center">
           <Icon className="w-4 h-4 text-[#00b4d8]" />
         </div>
         <h3 className="text-[#0a2540] font-bold text-[16px]">{title}</h3>
