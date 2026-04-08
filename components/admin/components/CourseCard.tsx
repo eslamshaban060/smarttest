@@ -94,7 +94,8 @@ export function CourseCard({
           className={`absolute bottom-3 ${isRTL ? "left-3" : "right-3"} flex items-center gap-1.5 text-white text-[12px] font-semibold`}
         >
           <PlayCircle className="w-4 h-4" />
-          {c.videoUrls.length} {t("videos", "فيديو")}
+          {c.videoUrls?.length} {t("videos", "فيديو")}
+          {/* {c.videoUrls?.length ?? 0} {t("videos", "فيديو")} */}
         </div>
 
         {/* language badge — bottom left */}

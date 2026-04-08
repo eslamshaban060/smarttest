@@ -1,3 +1,259 @@
+// generator client {
+//   provider = "prisma-client-js"
+//   output   = "./generated/prisma"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+// }
+
+// // ─── Auth ──────────────────────────────────────────────────────────────────────
+
+// model User {
+//   id            String   @id @default(uuid())
+//   email         String   @unique
+//   fullName      String
+//   phone         String?
+//   passwordHash  String
+//   role          Role     @default(STUDENT)
+//   isActive      Boolean  @default(true)
+//   emailVerified Boolean  @default(false)
+//   createdAt     DateTime @default(now())
+//   updatedAt     DateTime @updatedAt
+
+//   sessions         Session[]
+//   resetTokens      PasswordResetToken[]
+//   verifyTokens     EmailVerifyToken[]
+//   enrollments      Enrollment[]
+//   balance          Balance?
+//   transactions     Transaction[]
+//   rechargeRequests RechargeRequest[]
+// }
+
+// model Session {
+//   id        String   @id @default(uuid())
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   token     String   @unique
+//   expiresAt DateTime
+//   createdAt DateTime @default(now())
+// }
+
+// model PasswordResetToken {
+//   id        String   @id @default(uuid())
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   token     String   @unique
+//   expiresAt DateTime
+//   used      Boolean  @default(false)
+//   createdAt DateTime @default(now())
+// }
+
+// model EmailVerifyToken {
+//   id        String   @id @default(uuid())
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   token     String   @unique
+//   expiresAt DateTime
+//   used      Boolean  @default(false)
+//   createdAt DateTime @default(now())
+// }
+
+// // ─── Courses ───────────────────────────────────────────────────────────────────
+// model Course {
+//   id            String   @id @default(uuid())
+//   title         String
+//   titleAr       String?
+//   description   String?
+//   descriptionAr String?
+//   language      String   @default("AR")
+//   published     Boolean  @default(false)
+//   price         Float    @default(0)
+//   imageUrl      String?
+//   passingScore  Int      @default(60) // % للنجاح في الامتحان الشامل
+//   createdAt     DateTime @default(now())
+//   updatedAt     DateTime @updatedAt
+
+//   lessons     Lesson[]
+//   finalExam   FinalExam?
+//   enrollments Enrollment[]
+// }
+
+// model Enrollment {
+//   id        String           @id @default(uuid())
+//   userId    String
+//   courseId  String
+//   status    EnrollmentStatus @default(ACTIVE)
+//   progress  Int              @default(0) // 0-100
+//   createdAt DateTime         @default(now())
+//   updatedAt DateTime         @updatedAt
+
+//   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+//   videoProgress VideoProgress[]
+//   certificate   Certificate?
+
+//   @@unique([userId, courseId])
+// }
+
+// // ─── Balance ───────────────────────────────────────────────────────────────────
+
+// model Balance {
+//   id        String   @id @default(uuid())
+//   userId    String   @unique
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   amount    Float    @default(0)
+//   updatedAt DateTime @updatedAt
+// }
+
+// model Transaction {
+//   id          String          @id @default(uuid())
+//   userId      String
+//   user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   type        TransactionType
+//   amount      Float
+//   description String?
+//   createdAt   DateTime        @default(now())
+// }
+
+// // ─── Enums ─────────────────────────────────────────────────────────────────────
+// model VideoProgress {
+//   id           String     @id @default(uuid())
+//   enrollmentId String
+//   videoIndex   Int // index of video in course.videoUrls
+//   watched      Boolean    @default(false)
+//   watchedAt    DateTime?
+//   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+//   @@unique([enrollmentId, videoIndex])
+// }
+
+// model Certificate {
+//   id           String     @id @default(uuid())
+//   enrollmentId String     @unique
+//   userId       String
+//   courseId     String
+//   issuedAt     DateTime   @default(now())
+//   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+// }
+
+// enum Role {
+//   STUDENT
+//   ADMIN
+// }
+
+// enum EnrollmentStatus {
+//   ACTIVE
+//   COMPLETED
+//   CANCELLED
+// }
+
+// enum TransactionType {
+//   CREDIT
+//   DEBIT
+// }
+
+// model RechargeRequest {
+//   id         String         @id @default(uuid())
+//   userId     String
+//   amount     Float
+//   senderName String
+//   receiptUrl String // base64 or URL of receipt image
+//   status     RechargeStatus @default(PENDING)
+//   adminNote  String?
+//   createdAt  DateTime       @default(now())
+//   updatedAt  DateTime       @updatedAt
+
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
+
+// enum RechargeStatus {
+//   PENDING
+//   APPROVED
+//   REJECTED
+// }
+
+// model Lesson {
+//   id          String   @id @default(uuid())
+//   courseId    String
+//   order       Int // ترتيب الدرس
+//   titleEn     String
+//   titleAr     String?
+//   materialUrl String? // Google Drive link
+//   videoUrl    String? // YouTube link
+//   createdAt   DateTime @default(now())
+
+//   course   Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+//   quiz     LessonQuiz?
+//   progress LessonProgress[]
+// }
+
+// model LessonQuiz {
+//   id           String @id @default(uuid())
+//   lessonId     String @unique
+//   passingScore Int    @default(60)
+
+//   lesson    Lesson         @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+//   questions QuizQuestion[]
+//   attempts  QuizAttempt[]
+// }
+
+// model FinalExam {
+//   id           String @id @default(uuid())
+//   courseId     String @unique
+//   passingScore Int    @default(60)
+
+//   course    Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+//   questions QuizQuestion[]
+//   attempts  QuizAttempt[]
+// }
+
+// // 5. model QuizQuestion — سؤال MCQ
+// model QuizQuestion {
+//   id            String  @id @default(uuid())
+//   lessonQuizId  String?
+//   finalExamId   String?
+//   order         Int
+//   questionEn    String
+//   questionAr    String?
+//   options       Json // [{ id, textEn, textAr }]
+//   correctOption String // id of correct option
+
+//   lessonQuiz LessonQuiz? @relation(fields: [lessonQuizId], references: [id], onDelete: Cascade)
+//   finalExam  FinalExam?  @relation(fields: [finalExamId], references: [id], onDelete: Cascade)
+// }
+
+// model QuizAttempt {
+//   id           String   @id @default(uuid())
+//   userId       String
+//   lessonQuizId String?
+//   finalExamId  String?
+//   score        Int // percentage 0-100
+//   passed       Boolean
+//   answers      Json // { questionId: selectedOptionId }
+//   createdAt    DateTime @default(now())
+
+//   user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   lessonQuiz LessonQuiz? @relation(fields: [lessonQuizId], references: [id], onDelete: Cascade)
+//   finalExam  FinalExam?  @relation(fields: [finalExamId], references: [id], onDelete: Cascade)
+// }
+
+// model LessonProgress {
+//   id           String   @id @default(uuid())
+//   userId       String
+//   lessonId     String
+//   enrollmentId String
+//   videoWatched Boolean  @default(false)
+//   quizPassed   Boolean  @default(false)
+//   unlockedAt   DateTime @default(now())
+
+//   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   lesson     Lesson     @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+//   enrollment Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+//   @@unique([userId, lessonId])
+// }
 generator client {
   provider = "prisma-client-js"
   output   = "./generated/prisma"
@@ -28,6 +284,8 @@ model User {
   balance          Balance?
   transactions     Transaction[]
   rechargeRequests RechargeRequest[]
+  quizAttempts     QuizAttempt[] // ✅ مضاف
+  lessonProgress   LessonProgress[] // ✅ مضاف
 }
 
 model Session {
@@ -60,20 +318,24 @@ model EmailVerifyToken {
 }
 
 // ─── Courses ───────────────────────────────────────────────────────────────────
+
 model Course {
-  id            String       @id @default(uuid())
+  id            String   @id @default(uuid())
   title         String
   titleAr       String?
   description   String?
   descriptionAr String?
-  language      String       @default("AR")
-  published     Boolean      @default(false)
-  price         Float        @default(0)
-  videoUrls     String[]
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  language      String   @default("AR")
+  published     Boolean  @default(false)
+  price         Float    @default(0)
   imageUrl      String?
-  enrollments   Enrollment[]
+  passingScore  Int      @default(60)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  lessons     Lesson[]
+  finalExam   FinalExam?
+  enrollments Enrollment[]
 }
 
 model Enrollment {
@@ -81,15 +343,16 @@ model Enrollment {
   userId    String
   courseId  String
   status    EnrollmentStatus @default(ACTIVE)
-  progress  Int              @default(0) // 0-100
+  progress  Int              @default(0)
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-  videoProgress VideoProgress[]
-  certificate   Certificate?
+  videoProgress  VideoProgress[]
+  certificate    Certificate?
+  lessonProgress LessonProgress[] // ✅ مضاف
 
   @@unique([userId, courseId])
 }
@@ -114,11 +377,10 @@ model Transaction {
   createdAt   DateTime        @default(now())
 }
 
-// ─── Enums ─────────────────────────────────────────────────────────────────────
 model VideoProgress {
   id           String     @id @default(uuid())
   enrollmentId String
-  videoIndex   Int // index of video in course.videoUrls
+  videoIndex   Int
   watched      Boolean    @default(false)
   watchedAt    DateTime?
   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
@@ -135,6 +397,102 @@ model Certificate {
   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
 }
 
+model RechargeRequest {
+  id         String         @id @default(uuid())
+  userId     String
+  amount     Float
+  senderName String
+  receiptUrl String
+  status     RechargeStatus @default(PENDING)
+  adminNote  String?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Lesson {
+  id          String   @id @default(uuid())
+  courseId    String
+  order       Int
+  titleEn     String
+  titleAr     String?
+  materialUrl String?
+  videoUrl    String?
+  createdAt   DateTime @default(now())
+
+  course   Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  quiz     LessonQuiz?
+  progress LessonProgress[]
+}
+
+model LessonQuiz {
+  id           String @id @default(uuid())
+  lessonId     String @unique
+  passingScore Int    @default(60)
+
+  lesson    Lesson         @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+}
+
+model FinalExam {
+  id           String @id @default(uuid())
+  courseId     String @unique
+  passingScore Int    @default(60)
+
+  course    Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+}
+
+model QuizQuestion {
+  id            String  @id @default(uuid())
+  lessonQuizId  String?
+  finalExamId   String?
+  order         Int
+  questionEn    String
+  questionAr    String?
+  options       Json
+  correctOption String
+
+  lessonQuiz LessonQuiz? @relation(fields: [lessonQuizId], references: [id], onDelete: Cascade)
+  finalExam  FinalExam?  @relation(fields: [finalExamId], references: [id], onDelete: Cascade)
+}
+
+model QuizAttempt {
+  id           String   @id @default(uuid())
+  userId       String
+  lessonQuizId String?
+  finalExamId  String?
+  score        Int
+  passed       Boolean
+  answers      Json
+  createdAt    DateTime @default(now())
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonQuiz LessonQuiz? @relation(fields: [lessonQuizId], references: [id], onDelete: Cascade)
+  finalExam  FinalExam?  @relation(fields: [finalExamId], references: [id], onDelete: Cascade)
+}
+
+model LessonProgress {
+  id           String   @id @default(uuid())
+  userId       String
+  lessonId     String
+  enrollmentId String
+  videoWatched Boolean  @default(false)
+  quizPassed   Boolean  @default(false)
+  unlockedAt   DateTime @default(now())
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson     Lesson     @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  enrollment Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+}
+
+// ─── Enums ─────────────────────────────────────────────────────────────────────
+
 enum Role {
   STUDENT
   ADMIN
@@ -149,20 +507,6 @@ enum EnrollmentStatus {
 enum TransactionType {
   CREDIT
   DEBIT
-}
-
-model RechargeRequest {
-  id         String         @id @default(uuid())
-  userId     String
-  amount     Float
-  senderName String
-  receiptUrl String // base64 or URL of receipt image
-  status     RechargeStatus @default(PENDING)
-  adminNote  String?
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum RechargeStatus {

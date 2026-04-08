@@ -1,69 +1,74 @@
-// // import { NextRequest, NextResponse } from "next/server";
-// // import { prisma } from "@/lib/prisma";
-// // import { getCurrentUser } from "@/lib/auth";
+// import { NextRequest, NextResponse } from "next/server";
+// import { prisma } from "@/lib/prisma";
+// import { getCurrentUser } from "@/lib/auth";
 
-// // export async function GET() {
-// //   try {
-// //     const currentUser = await getCurrentUser();
-// //     if (!currentUser || currentUser.role !== "ADMIN") {
-// //       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-// //     }
+// export async function GET() {
+//   try {
+//     const currentUser = await getCurrentUser();
+//     if (!currentUser || currentUser.role !== "ADMIN")
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-// //     const courses = await prisma.course.findMany({
-// //       orderBy: { createdAt: "desc" },
-// //       include: { _count: { select: { enrollments: true } } },
-// //     });
+//     const courses = await prisma.course.findMany({
+//       orderBy: { createdAt: "desc" },
+//       include: { _count: { select: { enrollments: true } } },
+//     });
 
-// //     return NextResponse.json({ success: true, data: courses });
-// //   } catch (err) {
-// //     console.error("[ADMIN_COURSES_GET]", err);
-// //     return NextResponse.json({ error: "حدث خطأ" }, { status: 500 });
-// //   }
-// // }
+//     return NextResponse.json({ success: true, data: courses });
+//   } catch (err) {
+//     console.error("[ADMIN_COURSES_GET]", err);
+//     return NextResponse.json({ error: String(err) }, { status: 500 });
+//   }
+// }
 
-// // export async function POST(req: NextRequest) {
-// //   try {
-// //     const currentUser = await getCurrentUser();
-// //     if (!currentUser || currentUser.role !== "ADMIN") {
-// //       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-// //     }
+// export async function POST(req: NextRequest) {
+//   try {
+//     const currentUser = await getCurrentUser();
+//     if (!currentUser || currentUser.role !== "ADMIN")
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-// //     const {
-// //       title,
-// //       titleAr,
-// //       description,
-// //       descriptionAr,
-// //       language,
-// //       videoUrls,
-// //       price,
-// //     } = await req.json();
+//     const body = await req.json();
+//     const {
+//       title,
+//       titleAr,
+//       description,
+//       descriptionAr,
+//       language,
+//       videoUrls,
+//       price,
+//       published,
+//       imageUrl,
+//     } = body;
 
-// //     if (!title || !videoUrls || videoUrls.length === 0) {
-// //       return NextResponse.json(
-// //         { error: "العنوان وفيديو واحد على الأقل مطلوبان" },
-// //         { status: 400 },
-// //       );
-// //     }
+//     if (!title?.trim())
+//       return NextResponse.json({ error: "العنوان مطلوب" }, { status: 400 });
 
-// //     const course = await prisma.course.create({
-// //       data: {
-// //         title,
-// //         titleAr: titleAr ?? null,
-// //         description: description ?? null,
-// //         descriptionAr: descriptionAr ?? null,
-// //         language: language ?? "AR",
-// //         videoUrls: videoUrls,
-// //         price: price ?? 0,
-// //         published: false,
-// //       },
-// //     });
+//     if (!Array.isArray(videoUrls) || videoUrls.length === 0)
+//       return NextResponse.json(
+//         { error: "فيديو واحد على الأقل مطلوب" },
+//         { status: 400 },
+//       );
 
-// //     return NextResponse.json({ success: true, data: course });
-// //   } catch (err) {
-// //     console.error("[ADMIN_COURSES_POST]", err);
-// //     return NextResponse.json({ error: "حدث خطأ" }, { status: 500 });
-// //   }
-// // }
+//     const course = await prisma.course.create({
+//       data: {
+//         title: title.trim(),
+//         titleAr: titleAr?.trim() || null,
+//         description: description?.trim() || null,
+//         descriptionAr: descriptionAr?.trim() || null,
+//         language: language || "AR",
+//         videoUrls,
+//         price: typeof price === "number" ? price : 0,
+//         published: published === true,
+//         imageUrl: imageUrl?.trim() || null,
+//       },
+//     });
+
+//     return NextResponse.json({ success: true, data: course });
+//   } catch (err) {
+//     console.error("[ADMIN_COURSES_POST]", err);
+//     return NextResponse.json({ error: String(err) }, { status: 500 });
+//   }
+// }
+// app/api/admin/courses/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
@@ -76,7 +81,13 @@ export async function GET() {
 
     const courses = await prisma.course.findMany({
       orderBy: { createdAt: "desc" },
-      include: { _count: { select: { enrollments: true } } },
+      include: {
+        _count: { select: { enrollments: true, lessons: true } },
+        lessons: {
+          orderBy: { order: "asc" },
+          select: { id: true, order: true, titleEn: true, titleAr: true },
+        },
+      },
     });
 
     return NextResponse.json({ success: true, data: courses });
@@ -99,18 +110,19 @@ export async function POST(req: NextRequest) {
       description,
       descriptionAr,
       language,
-      videoUrls,
       price,
       published,
       imageUrl,
+      passingScore,
+      lessons,
+      finalExam,
     } = body;
 
     if (!title?.trim())
       return NextResponse.json({ error: "العنوان مطلوب" }, { status: 400 });
-
-    if (!Array.isArray(videoUrls) || videoUrls.length === 0)
+    if (!lessons?.length)
       return NextResponse.json(
-        { error: "فيديو واحد على الأقل مطلوب" },
+        { error: "درس واحد على الأقل مطلوب" },
         { status: 400 },
       );
 
@@ -121,11 +133,59 @@ export async function POST(req: NextRequest) {
         description: description?.trim() || null,
         descriptionAr: descriptionAr?.trim() || null,
         language: language || "AR",
-        videoUrls,
-        price: typeof price === "number" ? price : 0,
+        price: parseFloat(price) || 0,
         published: published === true,
         imageUrl: imageUrl?.trim() || null,
+        passingScore: passingScore || 60,
+        lessons: {
+          create: lessons.map((lesson: any, idx: number) => ({
+            order: idx + 1,
+            titleEn: lesson.titleEn,
+            titleAr: lesson.titleAr || null,
+            materialUrl: lesson.materialUrl || null,
+            videoUrl: lesson.videoUrl || null,
+            ...(lesson.quiz?.questions?.length > 0
+              ? {
+                  quiz: {
+                    create: {
+                      passingScore: lesson.quiz.passingScore || 60,
+                      questions: {
+                        create: lesson.quiz.questions.map(
+                          (q: any, qi: number) => ({
+                            order: qi + 1,
+                            questionEn: q.questionEn,
+                            questionAr: q.questionAr || null,
+                            options: q.options,
+                            correctOption: q.correctOption,
+                          }),
+                        ),
+                      },
+                    },
+                  },
+                }
+              : {}),
+          })),
+        },
+        ...(finalExam?.questions?.length > 0
+          ? {
+              finalExam: {
+                create: {
+                  passingScore: finalExam.passingScore || 60,
+                  questions: {
+                    create: finalExam.questions.map((q: any, qi: number) => ({
+                      order: qi + 1,
+                      questionEn: q.questionEn,
+                      questionAr: q.questionAr || null,
+                      options: q.options,
+                      correctOption: q.correctOption,
+                    })),
+                  },
+                },
+              },
+            }
+          : {}),
       },
+      include: { lessons: true, finalExam: true },
     });
 
     return NextResponse.json({ success: true, data: course });

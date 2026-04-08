@@ -168,10 +168,10 @@ exports.Prisma.CourseScalarFieldEnum = {
   language: 'language',
   published: 'published',
   price: 'price',
-  videoUrls: 'videoUrls',
+  imageUrl: 'imageUrl',
+  passingScore: 'passingScore',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  imageUrl: 'imageUrl'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.EnrollmentScalarFieldEnum = {
@@ -228,9 +228,68 @@ exports.Prisma.RechargeRequestScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LessonScalarFieldEnum = {
+  id: 'id',
+  courseId: 'courseId',
+  order: 'order',
+  titleEn: 'titleEn',
+  titleAr: 'titleAr',
+  materialUrl: 'materialUrl',
+  videoUrl: 'videoUrl',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LessonQuizScalarFieldEnum = {
+  id: 'id',
+  lessonId: 'lessonId',
+  passingScore: 'passingScore'
+};
+
+exports.Prisma.FinalExamScalarFieldEnum = {
+  id: 'id',
+  courseId: 'courseId',
+  passingScore: 'passingScore'
+};
+
+exports.Prisma.QuizQuestionScalarFieldEnum = {
+  id: 'id',
+  lessonQuizId: 'lessonQuizId',
+  finalExamId: 'finalExamId',
+  order: 'order',
+  questionEn: 'questionEn',
+  questionAr: 'questionAr',
+  options: 'options',
+  correctOption: 'correctOption'
+};
+
+exports.Prisma.QuizAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  lessonQuizId: 'lessonQuizId',
+  finalExamId: 'finalExamId',
+  score: 'score',
+  passed: 'passed',
+  answers: 'answers',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LessonProgressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  lessonId: 'lessonId',
+  enrollmentId: 'enrollmentId',
+  videoWatched: 'videoWatched',
+  quizPassed: 'quizPassed',
+  unlockedAt: 'unlockedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -241,6 +300,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.Role = exports.$Enums.Role = {
   STUDENT: 'STUDENT',
@@ -275,7 +340,13 @@ exports.Prisma.ModelName = {
   Transaction: 'Transaction',
   VideoProgress: 'VideoProgress',
   Certificate: 'Certificate',
-  RechargeRequest: 'RechargeRequest'
+  RechargeRequest: 'RechargeRequest',
+  Lesson: 'Lesson',
+  LessonQuiz: 'LessonQuiz',
+  FinalExam: 'FinalExam',
+  QuizQuestion: 'QuizQuestion',
+  QuizAttempt: 'QuizAttempt',
+  LessonProgress: 'LessonProgress'
 };
 
 /**
