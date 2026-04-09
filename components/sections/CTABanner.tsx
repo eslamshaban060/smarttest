@@ -36,7 +36,7 @@ export const CTABanner = () => {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/courses"
+              href="/dashboard/courses"
               className="inline-flex items-center gap-2.5 bg-secondary hover:bg-secondary/90 text-white font-semibold px-9 py-4 rounded-2xl shadow-xl shadow-secondary/30 hover:-translate-y-0.5 transition-all text-[15.5px]"
             >
               {t("Browse Courses", "تصفح الدورات")}

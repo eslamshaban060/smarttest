@@ -358,7 +358,7 @@ const About = () => {
               </div>
               <div className={`flex gap-3 flex-shrink-0 ${isRTL ? "" : ""}`}>
                 <Link
-                  href="/courses"
+                  href="/dashboard/courses"
                   className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-2xl text-[14px] shadow-lg shadow-secondary/20 hover:-translate-y-0.5 transition-all"
                 >
                   {t("Browse Courses", "تصفح الدورات")}

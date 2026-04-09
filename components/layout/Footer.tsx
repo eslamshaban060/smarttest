@@ -11,7 +11,7 @@ export const Footer = () => {
   const links = [
     { label: t("Home", "الرئيسية"), href: "/" },
     { label: t("About", "عنا"), href: "/about" },
-    { label: t("Courses", "الدورات"), href: "/courses" },
+    { label: t("Courses", "الدورات"), href: "/dashboard/courses" },
     { label: t("Book Series", "سلسلة الكتب"), href: "#book" },
     { label: t("Workshops", "الورش"), href: "/workshops" },
   ];

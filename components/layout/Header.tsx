@@ -81,7 +81,7 @@ export const Header = () => {
   const links = [
     { label: t("Home", "الرئيسية"), href: "/", emoji: "🏠" },
     { label: t("About", "عن الأكاديمية"), href: "/about", emoji: "👩‍⚕️" },
-    { label: t("Courses", "الدورات"), href: "/courses", emoji: "🎓" },
+    { label: t("Courses", "الدورات"), href: "/dashboard/courses", emoji: "🎓" },
     { label: t("Book Series", "سلسلة الكتب"), href: "#book", emoji: "📚" },
   ];
 

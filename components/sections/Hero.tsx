@@ -98,7 +98,7 @@ export const Hero = () => {
               className="flex flex-wrap gap-3 mb-14"
             >
               <Link
-                href="/courses"
+                href="/dashboard/courses"
                 className="inline-flex items-center gap-2.5 bg-secondary hover:bg-secondary/90 text-white font-semibold px-7 py-3.5 rounded-2xl shadow-xl shadow-secondary/30 hover:-translate-y-0.5 transition-all text-[15px]"
               >
                 {t("Browse Courses", "تصفح الدورات")}
