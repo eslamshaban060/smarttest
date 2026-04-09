@@ -23,7 +23,7 @@ export const FeaturedBook = () => {
     {
       n: 1,
       color: "from-[#00b4d8] to-[#0096b4]",
-      title: t("Basic Audiology", "السمعيات الأساسية"),
+      title: t("basic audiological knowledge", "السمعيات الأساسية"),
       pages: "280",
       topics: [
         t("Anatomy of the ear", "تشريح الأذن"),
@@ -34,7 +34,7 @@ export const FeaturedBook = () => {
     {
       n: 2,
       color: "from-[#0096c7] to-[#0077b6]",
-      title: t("Advanced Diagnostics", "التشخيص المتقدم"),
+      title: t("rehabilitation in audioliogy", "التشخيص المتقدم"),
       pages: "310",
       topics: [
         t("Speech audiometry", "قياس الكلام"),
@@ -45,7 +45,7 @@ export const FeaturedBook = () => {
     {
       n: 3,
       color: "from-[#0077b6] to-[#005f91]",
-      title: t("Vestibular System", "الجهاز الدهليزي"),
+      title: t("Basic knowledge of the vestibular system", "الجهاز الدهليزي"),
       pages: "295",
       topics: [
         t("VNG / ENG", "VNG / ENG"),
@@ -56,7 +56,7 @@ export const FeaturedBook = () => {
     {
       n: 4,
       color: "from-[#48cae4] to-[#00b4d8]",
-      title: t("Hearing Aids", "السماعات الطبية"),
+      title: t("auditory evoked potentials", "السماعات الطبية"),
       pages: "265",
       topics: [
         t("Candidacy & selection", "الاختيار والتركيب"),
@@ -78,7 +78,7 @@ export const FeaturedBook = () => {
     {
       n: 6,
       color: "from-[#e9c46a] to-[#f4a261]",
-      title: t("Board Preparation", "التحضير للبورد"),
+      title: t("central auditory processing", "التحضير للبورد"),
       pages: "340",
       topics: [
         t("MCQs & case studies", "أسئلة وحالات"),

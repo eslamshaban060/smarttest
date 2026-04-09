@@ -332,11 +332,6 @@ export const Header = () => {
                 className={`flex items-center justify-between px-6 py-4 border-b ${isDark ? "border-white/[0.07]" : "border-primary/[0.07]"}`}
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center">
-                    <span className="font-bold text-white text-sm font-serif">
-                      S
-                    </span>
-                  </div>
                   <span
                     className={`font-semibold text-[15px] ${isDark ? "text-white" : "text-primary"}`}
                   >

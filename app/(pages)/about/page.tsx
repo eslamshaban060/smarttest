@@ -215,7 +215,7 @@ const About = () => {
               <div className="space-y-4 text-slate-500 text-[15px] leading-[1.9] mb-7">
                 <p>
                   {t(
-                    'Prof. Nada is the author of the educational book series "Audiology Step by Step", now consisting of six volumes covering clinical audiology, vestibular assessment, hearing aids, cochlear implants, and more.',
+                    'Prof. Nada is the author of the educational book series "Audiology Step by Step", now consisting of six volumes covering clinical audiology, vestibular assessment, auditory evoked potentials, cochlear implants, and more.',
                     'أ.د. ابتسام هي مؤلفة سلسلة الكتب التعليمية "Audiology Step by Step" والتي أصبحت الآن 6 أجزاء تغطي السمعيات الإكلينيكية وتقييم الاتزان والسماعات الطبية وزراعة القوقعة وغيرها.',
                   )}
                 </p>
@@ -233,32 +233,38 @@ const About = () => {
                   {
                     n: 1,
                     color: "#00b4d8",
-                    title: t("Basic Audiology", "السمعيات الأساسية"),
+                    title: t(
+                      " basic audiological knowledge",
+                      "السمعيات الأساسية",
+                    ),
                   },
                   {
                     n: 2,
                     color: "#0096c7",
-                    title: t("Advanced Diagnostics", "التشخيص المتقدم"),
+                    title: t("rehabilitation in audioliogy", "التشخيص المتقدم"),
                   },
                   {
                     n: 3,
                     color: "#0077b6",
-                    title: t("Vestibular System", "الجهاز الدهليزي"),
+                    title: t(
+                      "Basic knowledge of the Basic knowledge of the vestibular system",
+                      "الجهاز الدهليزي",
+                    ),
                   },
                   {
                     n: 4,
                     color: "#48cae4",
-                    title: t("Hearing Aids", "السماعات الطبية"),
+                    title: t(" auditory evoked potentials", "السماعات الطبية"),
                   },
                   {
                     n: 5,
                     color: "#0d3868",
-                    title: t("Cochlear Implants", "زراعة القوقعة"),
+                    title: t("cochlear implants", "زراعة القوقعة"),
                   },
                   {
                     n: 6,
                     color: "#e9c46a",
-                    title: t("Board Preparation", "التحضير للبورد"),
+                    title: t(" central auditory processing", "التحضير للبورد"),
                   },
                 ].map((v) => (
                   <div

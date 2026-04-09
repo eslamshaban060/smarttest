@@ -37,7 +37,7 @@ export const WhatWeOffer = () => {
     },
     {
       Icon: Headphones,
-      title: t("Hearing Aids", "السماعات الطبية"),
+      title: t("auditory evoked potentials", "السماعات الطبية"),
       desc: t(
         "Selection, fitting, and programming of hearing amplification devices.",
         "اختيار وتركيب وبرمجة أجهزة تضخيم السمع.",
@@ -61,7 +61,7 @@ export const WhatWeOffer = () => {
     },
     {
       Icon: GraduationCap,
-      title: t("Board Preparation", "التحضير للبورد"),
+      title: t("central auditory processing", "التحضير للبورد"),
       desc: t(
         "Structured training for the Egyptian Board of Audio-Vestibular Medicine.",
         "تدريب منهجي للبورد المصري لطب السمع والاتزان.",
