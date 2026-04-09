@@ -1,4 +1,4 @@
-import CourseWatchPage from "@/components/courses/CourseWatchPage";
+import CourseDetailPage from "@/components/courses/CourseDetailPage";
 
 export default async function Page({
   params,
@@ -6,5 +6,5 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  return <CourseWatchPage courseId={id} />;
+  return <CourseDetailPage courseId={id} />;
 }
