@@ -1,4 +1,3 @@
-// // app/api/courses/[id]/route.ts
 // import { NextRequest, NextResponse } from "next/server";
 // import { prisma } from "@/lib/prisma";
 // import { getCurrentUser } from "@/lib/auth";
@@ -138,23 +137,10 @@ export async function GET(
                 id: true,
                 passingScore: true,
                 _count: { select: { questions: true } },
-                // ✅ include full questions for the learn page
-                questions: {
-                  orderBy: { order: "asc" },
-                  select: {
-                    id: true,
-                    order: true,
-                    questionEn: true,
-                    questionAr: true,
-                    options: true,
-                    correctOption: true,
-                  },
-                },
               },
             },
           },
         },
-        // ✅ include full finalExam questions — this was the 500 error cause
         finalExam: {
           select: {
             id: true,
@@ -164,7 +150,6 @@ export async function GET(
               orderBy: { order: "asc" },
               select: {
                 id: true,
-                order: true,
                 questionEn: true,
                 questionAr: true,
                 options: true,
@@ -195,6 +180,7 @@ export async function GET(
     if (!course)
       return NextResponse.json({ error: "Course not found" }, { status: 404 });
 
+    // compute which lessons are unlocked for this user
     const enrollment = (course as any).enrollments?.[0] ?? null;
     const progMap: Record<
       string,
@@ -212,6 +198,7 @@ export async function GET(
         videoWatched: false,
         quizPassed: false,
       };
+      // first lesson always unlocked if enrolled; others unlock when previous quiz passed
       const prevLesson = i > 0 ? (course.lessons as any[])[i - 1] : null;
       const prevPassed =
         i === 0

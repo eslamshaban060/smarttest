@@ -204,7 +204,7 @@ export const Header = () => {
                   </Link>
                 ) : (
                   <Link
-                    href="/profile"
+                    href="/auth/profile"
                     onClick={() => setDropdownOpen(false)}
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors text-[13px] font-medium ${
                       isDark
@@ -460,7 +460,7 @@ export const Header = () => {
                     </Link>
                   ) : (
                     <Link
-                      href="/profile"
+                      href="/auth/profile"
                       onClick={() => setOpen(false)}
                       className={`flex items-center gap-3.5 px-4 py-3.5 rounded-2xl transition-colors group ${isDark ? "hover:bg-white/[0.06]" : "hover:bg-primary/[0.05]"}`}
                     >
