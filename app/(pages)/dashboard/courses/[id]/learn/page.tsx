@@ -1,7 +1,10 @@
-import React from "react";
+import CourseLearnPage from "@/components/courses/Courselearnpage";
 
-const page = () => {
-  return <div></div>;
-};
-
-export default page;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return <CourseLearnPage courseId={id} />;
+}
