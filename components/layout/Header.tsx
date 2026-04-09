@@ -92,13 +92,6 @@ export const Header = () => {
     <button
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      // className={`flex items-center justify-center rounded-xl transition-all w-9 h-9 ${
-      //   mobile
-      //     ? "bg-primary/7 hover:bg-white/[0.14] text-primary/70 hover:text-white"
-      //     : isDark
-      //       ? "bg-white/[0.12] hover:bg-white/[0.12] border border-white/[0.1] text-white/70 hover:text-white"
-      //       : "bg-primary hover:bg-primary/[0.14] border border-primary/[0.12] text-primary/70 hover:text-primary"
-      // }`}
       className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
         isDark
           ? "bg-white/[0.08] text-white/60 hover:text-white"
@@ -115,9 +108,9 @@ export const Header = () => {
             transition={{ duration: 0.18 }}
           >
             {isDark ? (
-              <Moon className="w-4 h-4" />
-            ) : (
               <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
             )}
           </motion.div>
         </AnimatePresence>
