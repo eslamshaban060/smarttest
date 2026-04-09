@@ -17,7 +17,8 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/app/hooks/useLanguage";
-
+import Image from "next/image";
+import Logo from "@/app/assets/logo.jpeg";
 interface AuthUser {
   id: string;
   fullName: string;
@@ -244,13 +245,20 @@ export const Header = () => {
         <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-[64px]">
           {/* logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-secondary flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-105 transition-transform">
-              <span className="font-bold text-white text-sm font-serif">S</span>
+            <div className="w-18 h-10 rounded-xl  flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-105 transition-transform">
+              {/* <span className="font-bold text-white text-sm font-serif">S</span> */}
+              <Image
+                src={Logo}
+                alt="logo"
+                className="  w-fit h-full  "
+                width={100}
+                height={100}
+              />
             </div>
             <span
               className={`font-semibold text-[16px] tracking-tight ${isDark ? "text-white" : "text-primary"}`}
             >
-              {t("EN-AVM Academy", "سمارت أكاديمي")}
+              {/* {t("EN-AVM Academy", "سمارت أكاديمي")} */}
             </span>
           </Link>
 
