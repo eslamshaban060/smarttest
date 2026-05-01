@@ -32,7 +32,7 @@ export function AuthCard({
 
       <div className="w-full max-w-md relative z-10">
         {/* logo */}
-        <div className="text-center mb-8">
+        {/* <div className="text-center mb-8">
           <Link href="/" className="inline-flex flex-col items-center gap-1.5">
             <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
               <span className="text-[#00b4d8] font-serif font-bold text-[18px]">
@@ -43,7 +43,7 @@ export function AuthCard({
               EN-AVM Academy
             </span>
           </Link>
-        </div>
+        </div> */}
 
         {/* card */}
         <div

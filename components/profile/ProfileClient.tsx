@@ -828,7 +828,7 @@
 //   const [sending, setSending] = useState(false);
 //   const [done, setDone] = useState(false);
 
-//   const INSTAPAY_NUMBER = "01006407387";
+//   const INSTAPAY_NUMBER = "01227752699";
 //   const WHATSAPP_NUMBER = "201006407387";
 //   const shortId = userId.slice(0, 8).toUpperCase();
 
@@ -1860,7 +1860,7 @@ function RechargeModal({
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const INSTAPAY = "01006407387";
+  const INSTAPAY = "01227752699";
   const WA = "201006407387";
   const shortId = userId.slice(0, 8).toUpperCase();
 
